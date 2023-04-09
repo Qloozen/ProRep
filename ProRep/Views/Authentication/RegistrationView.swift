@@ -1,5 +1,5 @@
 //
-//  LoginView.swift
+//  RegistrationView.swift
 //  ProRep
 //
 //  Created by Qiang Loozen on 09/04/2023.
@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct LoginView: View {
+struct RegistrationView: View {
     @State private var emailInput: String = ""
     @State private var passwordInput: String = ""
+    @State private var confirmPasswordInput: String = ""
 
     var body: some View {
         VStack(alignment: .leading, spacing: 40) {
@@ -19,49 +20,33 @@ struct LoginView: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 150)
             
-            Spacer()
             
-            Text("Login")
+            Text("Sign Up")
                 .font(.title)
                 .fontWeight(.bold)
             
             VStack(alignment: .leading, spacing: 20) {
                 UnderlineTextField(textInput: $emailInput, hint: "email@example.com", icon: "at")
                     .keyboardType(.emailAddress)
+                
                 PasswordField(passwordInput: $passwordInput)
+                
+                PasswordField(passwordInput: $confirmPasswordInput)
             }
             
-            VStack(spacing: 15){
-                StyledButton(title: "Login") {
-                    print("Login button")
-                }
- 
-                Text("OR")
-
-                StyledButton(title: "Apple") {
-                    print("Apple button")
-                }
-                Text("OR")
-
-                StyledButton(title: "Google") {
-                    print("Google button")
-                }
-                                
-                HStack(spacing: 0) {
-                    Text("New to ProRep? ")
-                    NavigationLink("Register") {
-                        RegistrationView()
-                    }
-                    .foregroundColor(Color.themedGreen)
-                }
+            StyledButton(title: "Register") {
+                print("Register Button")
             }
+            
+            Spacer()
+
         }
         .padding(25)
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
+struct RegistrationView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        RegistrationView()
     }
 }

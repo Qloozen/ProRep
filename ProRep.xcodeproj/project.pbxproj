@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF9EC18529E30F29004CE411 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9EC18429E30F29004CE411 /* RegistrationView.swift */; };
+		BF9EC18729E328D2004CE411 /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9EC18629E328D2004CE411 /* PasswordField.swift */; };
 		BF9F840529E2C30F00B337D0 /* ProRepApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F840429E2C30F00B337D0 /* ProRepApp.swift */; };
 		BF9F840729E2C30F00B337D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F840629E2C30F00B337D0 /* ContentView.swift */; };
 		BF9F840929E2C31000B337D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF9F840829E2C31000B337D0 /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF9EC18429E30F29004CE411 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		BF9EC18629E328D2004CE411 /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
 		BF9F840129E2C30F00B337D0 /* ProRep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProRep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF9F840429E2C30F00B337D0 /* ProRepApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProRepApp.swift; sourceTree = "<group>"; };
 		BF9F840629E2C30F00B337D0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				BF9F841829E2E13C00B337D0 /* LoginView.swift */,
+				BF9EC18429E30F29004CE411 /* RegistrationView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 			children = (
 				BF9F842329E2E8DE00B337D0 /* UnderlineTextField.swift */,
 				BF9F842529E2F14A00B337D0 /* StyledButton.swift */,
+				BF9EC18629E328D2004CE411 /* PasswordField.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -216,7 +222,9 @@
 				BF9F842629E2F14A00B337D0 /* StyledButton.swift in Sources */,
 				BF9F842429E2E8DE00B337D0 /* UnderlineTextField.swift in Sources */,
 				BF9F841929E2E13C00B337D0 /* LoginView.swift in Sources */,
+				BF9EC18529E30F29004CE411 /* RegistrationView.swift in Sources */,
 				BF9F840729E2C30F00B337D0 /* ContentView.swift in Sources */,
+				BF9EC18729E328D2004CE411 /* PasswordField.swift in Sources */,
 				BF9F840529E2C30F00B337D0 /* ProRepApp.swift in Sources */,
 				BF9F842829E2F4E500B337D0 /* ColorExtensions.swift in Sources */,
 			);
