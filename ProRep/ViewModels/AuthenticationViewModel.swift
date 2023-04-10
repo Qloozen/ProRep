@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 
 @MainActor class AuthenticationViewModel: ObservableObject {
     @Published var showError: Bool = false
@@ -38,7 +39,15 @@ import FirebaseAuth
         guard let weight, let height else {
             return
         }
-        UserService.sharedInstance.createUser(user: .init(provider_UID: provider_UID, name: name, birthday: birthday, current_weight: weight, email: email, height: height, gender: gender))
+        let user = UserModel(provider_UID: provider_UID, name: name, birthday: birthday, current_weight: weight, email: email, height: height, gender: gender)
+        UserService.sharedInstance.createUser(user: user) { [weak self] result in
+            switch result {
+            case .success(let user_id):
+                self?.getUserInfo(user_id: user_id)
+            case .failure(let failure):
+                print(String(describing: failure))
+            }
+        }
     }
     
     // validation
@@ -72,20 +81,32 @@ import FirebaseAuth
     
     // MARK: Private
     private func signInToFirebase(credential: AuthCredential) {
-        AuthService.sharedInstance.signInToFirebase(credential: credential) { isError, isNewUser, provider_UID, user_id in
+        AuthService.sharedInstance.signInToFirebase(credential: credential) { [weak self] isError, isNewUser, provider_UID, user_id in
             guard !isError, let isNewUser, let provider_UID else {
-                self.showError.toggle()
+                self?.showError.toggle()
                 return
             }
             
-            self.provider_UID = provider_UID
+            self?.provider_UID = provider_UID
             
             if let user_id, !isNewUser {
                 print("Existing user")
-                // directly fetch user
+                self?.getUserInfo(user_id: user_id)
             } else {
-                print("New user")
-                self.showRegistrationForm.toggle()
+                self?.showRegistrationForm.toggle()
+            }
+        }
+    }
+    
+    private func getUserInfo(user_id: String) {
+        print("Getuserinfo")
+        UserService.sharedInstance.getUserById(id: user_id) { result in
+            switch result {
+            case .success(let model):
+                UserDefaults.standard.set(model.id, forKey: CurrentUserDefaults.user_id.rawValue)
+                UserDefaults.standard.set(model.name, forKey: CurrentUserDefaults.name.rawValue)
+            case .failure(let failure):
+                print(String(describing: failure))
             }
         }
     }

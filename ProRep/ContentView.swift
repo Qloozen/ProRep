@@ -8,14 +8,33 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage(CurrentUserDefaults.name.rawValue) var user: String?
+    
     var body: some View {
-        if true {
+        if user != nil {
+            // Main app
+            TabView {
+                Text("Home")
+                    .tabItem {
+                        Text("Home")
+                    }
+                Text("Exercises")
+                    .tabItem {
+                        Text("Exercises")
+                    }
+                Button("Logout", action: {
+                    AuthService.sharedInstance.logOutUser { success in
+                        
+                    }
+                })
+                    .tabItem {
+                        Text("Settings")
+                    }
+            }
+        } else {
             NavigationStack {
                 LoginView()
             }
-        } else {
-            // Main app
-            
         }
     }
 }

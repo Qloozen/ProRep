@@ -36,9 +36,25 @@ final class AuthService {
         }
     }
     
+    func logOutUser(handler: @escaping (_ success: Bool) -> ()) {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print("Error logging out")
+            handler(false)
+            return
+        }
+        handler(true)
+        
+        let defaultsDictionary = UserDefaults.standard.dictionaryRepresentation()
+        defaultsDictionary.keys.forEach { key in
+            UserDefaults.standard.removeObject(forKey: key)
+        }
+    }
+    
     // MARK: Private
     private func checkIfUserExist(provider_UID: String, completionHandler: @escaping (_ user_id: String?) -> Void) {
-        REF_USERS.whereField("provider_UUID", isEqualTo: provider_UID).getDocuments { result, error in
+        REF_USERS.whereField("provider_UID", isEqualTo: provider_UID).getDocuments { result, error in
             guard let result, result.count > 0, let user = result.documents.first, error == nil else {
                 completionHandler(nil)
                 return

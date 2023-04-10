@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF31097329E359FD004C673D /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31097229E359FD004C673D /* UserDefaultKeys.swift */; };
+		BF31097329E359FD004C673D /* CurrentUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31097229E359FD004C673D /* CurrentUserDefaults.swift */; };
 		BF31097529E3652D004C673D /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31097429E3652D004C673D /* AuthenticationViewModel.swift */; };
 		BF31097729E36E53004C673D /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31097629E36E53004C673D /* UserService.swift */; };
 		BF31097929E3F9AC004C673D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31097829E3F9AC004C673D /* UserModel.swift */; };
@@ -37,7 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BF31097229E359FD004C673D /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
+		BF31097229E359FD004C673D /* CurrentUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserDefaults.swift; sourceTree = "<group>"; };
 		BF31097429E3652D004C673D /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		BF31097629E36E53004C673D /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		BF31097829E3F9AC004C673D /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 		BF31096F29E35481004C673D /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				BF31097229E359FD004C673D /* UserDefaultKeys.swift */,
+				BF31097229E359FD004C673D /* CurrentUserDefaults.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -306,7 +306,7 @@
 				BF9EC18729E328D2004CE411 /* PasswordField.swift in Sources */,
 				BF31097529E3652D004C673D /* AuthenticationViewModel.swift in Sources */,
 				BF31098029E41292004C673D /* SignInProviderProtocol.swift in Sources */,
-				BF31097329E359FD004C673D /* UserDefaultKeys.swift in Sources */,
+				BF31097329E359FD004C673D /* CurrentUserDefaults.swift in Sources */,
 				BF9EC1A729E348A5004CE411 /* AuthService.swift in Sources */,
 				BF9F840529E2C30F00B337D0 /* ProRepApp.swift in Sources */,
 				BF31097929E3F9AC004C673D /* UserModel.swift in Sources */,

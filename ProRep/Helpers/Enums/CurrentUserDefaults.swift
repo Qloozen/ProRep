@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum UserDefaultKeys: String {
+enum CurrentUserDefaults: String {
     case user_id, name
 }
