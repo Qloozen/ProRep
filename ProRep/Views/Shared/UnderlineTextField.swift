@@ -7,32 +7,62 @@
 
 import SwiftUI
 
-struct UnderlineTextField: View {
-    @Binding var textInput: String
-    var hint: String
+struct UnderlineTextField<Content: View>: View {
     var icon: String
-        
+    var content: Content
+    var prompt: String?
+    
+    init(icon: String, prompt: String? = nil, @ViewBuilder _ content: () -> Content) {
+        self.icon = icon
+        self.prompt = prompt
+        self.content = content()
+    }
+            
     var body: some View {
-        HStack {
-            Image(systemName: icon)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 24, height: 24)
-            TextField(hint, text: $textInput)
+        VStack {
+            HStack {
+                Image(systemName: icon)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 24, height: 24)
+                    .padding(.trailing, 10)
+                
+                content
+                    .foregroundColor(prompt != nil ? .red : .primary)
+
+            }
+            if let prompt {
+                Text(prompt)
+                    .font(.caption)
+                    .foregroundColor(.red)
+                    .italic()
+            }
         }
-        .textFieldStyle(UnderlineTextFieldStyle())
+        .textFieldStyle(UnderlineTextFieldStyle(isError: prompt != nil))
     }
 }
 
 struct UnderlineTextFieldStyle: TextFieldStyle {
+    var isError: Bool
+    
+    init (isError: Bool = false) {
+        self.isError = isError
+    }
+    
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
             .padding(.vertical, 10)
             .background {
                 VStack {
                     Spacer()
-                    Color.gray
-                        .frame(height: 2)
+                    if isError {
+                        Color.red
+                            .frame(height: 2)
+                    } else {
+                        Color.gray
+                            .frame(height: 2)
+                    }
+
                 }
             }
             .cornerRadius(5)
@@ -42,8 +72,10 @@ struct UnderlineTextFieldStyle: TextFieldStyle {
 
 
 struct UnderlineTextField_Previews: PreviewProvider {
-    @State static var textInput: String = ""
+    @State static var textInput: String = "hello"
     static var previews: some View {
-        UnderlineTextField(textInput: $textInput, hint: "example.com", icon: "key")
+        UnderlineTextField(icon: "person", prompt: "kaas") {
+            TextField("email", text: $textInput)
+        }
     }
 }

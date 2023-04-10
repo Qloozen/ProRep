@@ -26,9 +26,11 @@ struct RegistrationView: View {
                 .fontWeight(.bold)
             
             VStack(alignment: .leading, spacing: 20) {
-                UnderlineTextField(textInput: $emailInput, hint: "email@example.com", icon: "at")
-                    .keyboardType(.emailAddress)
-                
+                UnderlineTextField(icon: "at") {
+                    TextField("email", text: $emailInput)
+                        .keyboardType(.emailAddress)
+                }
+    
                 PasswordField(passwordInput: $passwordInput)
                 
                 PasswordField(passwordInput: $confirmPasswordInput)

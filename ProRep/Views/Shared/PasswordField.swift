@@ -19,6 +19,8 @@ struct PasswordField: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 24, height: 24)
+                .padding(.trailing, 10)
+
             ZStack(alignment: .trailing) {
                 TextField("password", text: $passwordInput)
                     .textFieldStyle(UnderlineTextFieldStyle())
@@ -28,6 +30,7 @@ struct PasswordField: View {
                     .keyboardType(.asciiCapable)
                     .focused($focus1)
                     .opacity(isVisable ? 1 : 0)
+                
                 SecureField("password", text: $passwordInput)
                     .textFieldStyle(UnderlineTextFieldStyle())
                     .autocorrectionDisabled(true)

@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import GoogleSignInSwift
 
 struct LoginView: View {
-    @State private var emailInput: String = ""
-    @State private var passwordInput: String = ""
-
+    @StateObject private var viewModel = AuthenticationViewModel()
+    
+    @State var emailInput: String = ""
+    @State var passwordInput: String = ""
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 40) {
             Image("logo_large_transparent")
@@ -26,8 +29,11 @@ struct LoginView: View {
                 .fontWeight(.bold)
             
             VStack(alignment: .leading, spacing: 20) {
-                UnderlineTextField(textInput: $emailInput, hint: "email@example.com", icon: "at")
-                    .keyboardType(.emailAddress)
+                UnderlineTextField(icon: "at") {
+                    TextField("email", text: $emailInput)
+                        .keyboardType(.emailAddress)
+                }
+                    
                 PasswordField(passwordInput: $passwordInput)
             }
             
@@ -38,14 +44,46 @@ struct LoginView: View {
  
                 Text("OR")
 
-                StyledButton(title: "Apple") {
-                    print("Apple button")
+                Button {
+                    print("sign in with Apple")
+                } label: {
+                    HStack {
+                        Image(systemName: "apple.logo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 24)
+                        Text("Sign in with Apple")
+                    }
                 }
+                .tint(Color(uiColor: .secondarySystemBackground))
+                .padding(15)
+                .frame(maxWidth: .infinity)
+                .background(.primary)
+                .cornerRadius(10)
+                .fontWeight(.bold)
+                .font(.system(size: 18))
+                
                 Text("OR")
 
-                StyledButton(title: "Google") {
-                    print("Google button")
+                Button {
+                    print("sign in with Google")
+                    viewModel.signInWithGoogle()
+                } label: {
+                    HStack {
+                        Image("google")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 24)
+                        Text("Sign in with Google")
+                    }
                 }
+                .tint(Color(uiColor: .secondarySystemBackground))
+                .padding(15)
+                .frame(maxWidth: .infinity)
+                .background(.primary)
+                .cornerRadius(10)
+                .fontWeight(.bold)
+                .font(.system(size: 18))
                                 
                 HStack(spacing: 0) {
                     Text("New to ProRep? ")
@@ -56,6 +94,9 @@ struct LoginView: View {
                 }
             }
         }
+        .fullScreenCover(isPresented: $viewModel.showRegistrationForm, content: {
+            RegistrationForum(viewModel: viewModel)
+        })
         .padding(25)
     }
 }

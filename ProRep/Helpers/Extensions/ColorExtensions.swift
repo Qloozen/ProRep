@@ -10,4 +10,5 @@ import SwiftUI
 
 extension Color {
     static let themedGreen = Color("ThemedGreen")
+    static let googleRed = Color("GoogleRed")
 }
