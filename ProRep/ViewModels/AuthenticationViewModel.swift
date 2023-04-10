@@ -18,7 +18,11 @@ import FirebaseFirestore
     @Published var gender: Gender = .male
     @Published var height: Double?
     @Published var weight: Double?
-    private var email: String = ""
+    
+    @Published var email: String = ""
+    @Published var password: String = ""
+    @Published var passwordConfirm: String = ""
+
     private var provider_UID: String = ""
     
     // MARK: Public
@@ -32,6 +36,28 @@ import FirebaseFirestore
             self.name = name
             self.email = email
             self.signInToFirebase(credential: credential)
+        }
+    }
+    
+    public func signInWithEmail() {
+        SignInWithEmail.sharedInstance.signIn(email: email, password: password) { result in
+            switch result {
+            case .success(let credential):
+                self.signInToFirebase(credential: credential)
+            case .failure(let failure):
+                print(String(describing: failure))
+            }
+        }
+    }
+    
+    public func registerWithEmail() {
+        SignInWithEmail.sharedInstance.register(email: email, password: password) { result in
+            switch result {
+            case .success(let credential):
+                self.signInToFirebase(credential: credential)
+            case .failure(let failure):
+                print(String(describing: failure))
+            }
         }
     }
     

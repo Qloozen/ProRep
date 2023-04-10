@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RegistrationView: View {
+    @StateObject var viewModel = AuthenticationViewModel()
     @State private var emailInput: String = ""
     @State private var passwordInput: String = ""
     @State private var confirmPasswordInput: String = ""
@@ -27,17 +28,18 @@ struct RegistrationView: View {
             
             VStack(alignment: .leading, spacing: 20) {
                 UnderlineTextField(icon: "at") {
-                    TextField("email", text: $emailInput)
+                    TextField("email", text: $viewModel.email)
                         .keyboardType(.emailAddress)
                 }
     
-                PasswordField(passwordInput: $passwordInput)
+                PasswordField(passwordInput: $viewModel.password)
                 
-                PasswordField(passwordInput: $confirmPasswordInput)
+                PasswordField(passwordInput: $viewModel.passwordConfirm)
             }
             
             StyledButton(title: "Register") {
                 print("Register Button")
+                viewModel.registerWithEmail()
             }
             
             Spacer()

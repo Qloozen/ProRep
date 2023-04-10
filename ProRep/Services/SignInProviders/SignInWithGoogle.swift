@@ -10,7 +10,7 @@ import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
 
-final class SignInWithGoogle: SignInProviderProtocol {
+final class SignInWithGoogle {
     public static let sharedInstance = SignInWithGoogle()
     
     private init() {}

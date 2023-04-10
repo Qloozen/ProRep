@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF028AE329E4A419003B3338 /* SignInWithEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF028AE229E4A419003B3338 /* SignInWithEmail.swift */; };
+		BF028AE529E4A570003B3338 /* CustomErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF028AE429E4A570003B3338 /* CustomErrors.swift */; };
 		BF31097329E359FD004C673D /* CurrentUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31097229E359FD004C673D /* CurrentUserDefaults.swift */; };
 		BF31097529E3652D004C673D /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31097429E3652D004C673D /* AuthenticationViewModel.swift */; };
 		BF31097729E36E53004C673D /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31097629E36E53004C673D /* UserService.swift */; };
 		BF31097929E3F9AC004C673D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31097829E3F9AC004C673D /* UserModel.swift */; };
 		BF31097B29E3FCE7004C673D /* RegistrationForum.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31097A29E3FCE7004C673D /* RegistrationForum.swift */; };
-		BF31098029E41292004C673D /* SignInProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31097F29E41292004C673D /* SignInProviderProtocol.swift */; };
 		BF9EC18529E30F29004CE411 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9EC18429E30F29004CE411 /* RegistrationView.swift */; };
 		BF9EC18729E328D2004CE411 /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9EC18629E328D2004CE411 /* PasswordField.swift */; };
 		BF9EC18F29E335CF004CE411 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF9EC18E29E335CF004CE411 /* GoogleService-Info.plist */; };
@@ -37,12 +38,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF028AE229E4A419003B3338 /* SignInWithEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithEmail.swift; sourceTree = "<group>"; };
+		BF028AE429E4A570003B3338 /* CustomErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrors.swift; sourceTree = "<group>"; };
 		BF31097229E359FD004C673D /* CurrentUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserDefaults.swift; sourceTree = "<group>"; };
 		BF31097429E3652D004C673D /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		BF31097629E36E53004C673D /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		BF31097829E3F9AC004C673D /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		BF31097A29E3FCE7004C673D /* RegistrationForum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationForum.swift; sourceTree = "<group>"; };
-		BF31097F29E41292004C673D /* SignInProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInProviderProtocol.swift; sourceTree = "<group>"; };
 		BF9EC18429E30F29004CE411 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		BF9EC18629E328D2004CE411 /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
 		BF9EC18E29E335CF004CE411 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				BF31097229E359FD004C673D /* CurrentUserDefaults.swift */,
+				BF028AE429E4A570003B3338 /* CustomErrors.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -91,7 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				BF9EC19E29E33821004CE411 /* SignInWithGoogle.swift */,
-				BF31097F29E41292004C673D /* SignInProviderProtocol.swift */,
+				BF028AE229E4A419003B3338 /* SignInWithEmail.swift */,
 			);
 			path = SignInProviders;
 			sourceTree = "<group>";
@@ -300,12 +303,13 @@
 				BF9F842429E2E8DE00B337D0 /* UnderlineTextField.swift in Sources */,
 				BF9F841929E2E13C00B337D0 /* LoginView.swift in Sources */,
 				BF9EC18529E30F29004CE411 /* RegistrationView.swift in Sources */,
+				BF028AE329E4A419003B3338 /* SignInWithEmail.swift in Sources */,
 				BF9EC19F29E33821004CE411 /* SignInWithGoogle.swift in Sources */,
+				BF028AE529E4A570003B3338 /* CustomErrors.swift in Sources */,
 				BF31097B29E3FCE7004C673D /* RegistrationForum.swift in Sources */,
 				BF9F840729E2C30F00B337D0 /* ContentView.swift in Sources */,
 				BF9EC18729E328D2004CE411 /* PasswordField.swift in Sources */,
 				BF31097529E3652D004C673D /* AuthenticationViewModel.swift in Sources */,
-				BF31098029E41292004C673D /* SignInProviderProtocol.swift in Sources */,
 				BF31097329E359FD004C673D /* CurrentUserDefaults.swift in Sources */,
 				BF9EC1A729E348A5004CE411 /* AuthService.swift in Sources */,
 				BF9F840529E2C30F00B337D0 /* ProRepApp.swift in Sources */,

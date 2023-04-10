@@ -11,9 +11,6 @@ import GoogleSignInSwift
 struct LoginView: View {
     @StateObject private var viewModel = AuthenticationViewModel()
     
-    @State var emailInput: String = ""
-    @State var passwordInput: String = ""
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 40) {
             Image("logo_large_transparent")
@@ -30,16 +27,17 @@ struct LoginView: View {
             
             VStack(alignment: .leading, spacing: 20) {
                 UnderlineTextField(icon: "at") {
-                    TextField("email", text: $emailInput)
+                    TextField("email", text: $viewModel.email)
                         .keyboardType(.emailAddress)
                 }
                     
-                PasswordField(passwordInput: $passwordInput)
+                PasswordField(passwordInput: $viewModel.password)
             }
             
             VStack(spacing: 15){
                 StyledButton(title: "Login") {
                     print("Login button")
+                    viewModel.signInWithEmail()
                 }
  
                 Text("OR")
