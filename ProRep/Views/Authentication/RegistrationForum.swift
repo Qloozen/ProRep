@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RegistrationForum: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject var viewModel: AuthenticationViewModel
+    @StateObject var viewModel: RegistrationForumViewModel
 
     var body: some View {
         VStack {
@@ -71,7 +71,7 @@ struct RegistrationForum: View {
 
 struct RegistrationForum_Previews: PreviewProvider {
     static var previews: some View {
-        @StateObject var vm = AuthenticationViewModel()
+        @StateObject var vm = RegistrationForumViewModel(name: "", email: "email@email.com", provider_UID: "123")
         RegistrationForum(viewModel: vm)
     }
 }

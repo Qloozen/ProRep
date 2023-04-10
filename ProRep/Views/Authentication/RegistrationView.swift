@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct RegistrationView: View {
-    @StateObject var viewModel = AuthenticationViewModel()
-    @State private var emailInput: String = ""
-    @State private var passwordInput: String = ""
-    @State private var confirmPasswordInput: String = ""
+    @StateObject var viewModel = RegistationViewModel()
 
     var body: some View {
         VStack(alignment: .leading, spacing: 40) {
@@ -45,6 +42,13 @@ struct RegistrationView: View {
             Spacer()
 
         }
+        .fullScreenCover(isPresented: $viewModel.showRegistrationForm, content: {
+            RegistrationForum(viewModel: RegistrationForumViewModel(
+                name: "",
+                email: viewModel.email,
+                provider_UID: viewModel.provider_UID)
+            )
+        })
         .padding(25)
     }
 }

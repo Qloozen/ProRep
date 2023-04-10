@@ -9,7 +9,7 @@ import SwiftUI
 import GoogleSignInSwift
 
 struct LoginView: View {
-    @StateObject private var viewModel = AuthenticationViewModel()
+    @StateObject private var viewModel = LoginViewModel()
     
     var body: some View {
         VStack(alignment: .leading, spacing: 40) {
@@ -27,11 +27,11 @@ struct LoginView: View {
             
             VStack(alignment: .leading, spacing: 20) {
                 UnderlineTextField(icon: "at") {
-                    TextField("email", text: $viewModel.email)
+                    TextField("email", text: $viewModel.loginEmail)
                         .keyboardType(.emailAddress)
                 }
                     
-                PasswordField(passwordInput: $viewModel.password)
+                PasswordField(passwordInput: $viewModel.loginPassword)
             }
             
             VStack(spacing: 15){
@@ -93,7 +93,11 @@ struct LoginView: View {
             }
         }
         .fullScreenCover(isPresented: $viewModel.showRegistrationForm, content: {
-            RegistrationForum(viewModel: viewModel)
+            RegistrationForum(viewModel: RegistrationForumViewModel(
+                name: viewModel.name,
+                email: viewModel.email,
+                provider_UID: viewModel.provider_UID)
+            )
         })
         .padding(25)
     }

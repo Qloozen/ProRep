@@ -14,9 +14,10 @@ final class AuthService {
     public static let sharedInstance = AuthService()
     private let REF_USERS = db.collection("users")
     
+    // MARK: Init
     private init() {}
 
-    // MARK: Public
+    // MARK: Public functions
     public func signInToFirebase(credential: AuthCredential, completionHandler: @escaping (_ isError: Bool, _ isNewUser: Bool?, _ provider_UID: String?, _ user_id: String?) -> Void) {
         print("Sign into Firebase")
         Auth.auth().signIn(with: credential) { result, error in
@@ -36,7 +37,20 @@ final class AuthService {
         }
     }
     
-    func logOutUser(handler: @escaping (_ success: Bool) -> ()) {
+    public func storeUserdata(user_id: String) {
+        print("Storing user data in userdefaults")
+        UserService.sharedInstance.getUserById(id: user_id) { result in
+            switch result {
+            case .success(let model):
+                UserDefaults.standard.set(model.id, forKey: CurrentUserDefaults.user_id.rawValue)
+                UserDefaults.standard.set(model.name, forKey: CurrentUserDefaults.name.rawValue)
+            case .failure(let failure):
+                print(String(describing: failure))
+            }
+        }
+    }
+    
+    public func logOutUser(handler: @escaping (_ success: Bool) -> ()) {
         do {
             try Auth.auth().signOut()
         } catch {
@@ -52,8 +66,7 @@ final class AuthService {
         }
     }
     
-    // MARK: Private
-    private func checkIfUserExist(provider_UID: String, completionHandler: @escaping (_ user_id: String?) -> Void) {
+    public func checkIfUserExist(provider_UID: String, completionHandler: @escaping (_ user_id: String?) -> Void) {
         REF_USERS.whereField("provider_UID", isEqualTo: provider_UID).getDocuments { result, error in
             guard let result, result.count > 0, let user = result.documents.first, error == nil else {
                 completionHandler(nil)
@@ -62,4 +75,7 @@ final class AuthService {
             completionHandler(user.documentID)
         }
     }
+    
+    // MARK: Private functions
+
 }
