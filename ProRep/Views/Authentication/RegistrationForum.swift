@@ -57,14 +57,12 @@ struct RegistrationForum: View {
             
             Spacer()
 
-            StyledButton(title: "Account maken", color: viewModel.isValid ? nil : .gray) {
-                print("maakt aacount")
+            StyledButton(title: "Account maken", isLoading: viewModel.isLoading, disabled: !viewModel.isValid) {
+                print("Create account")
                 viewModel.createAccount()
                 dismiss()
             }
-            .disabled(!viewModel.isValid)
         }
-        .navigationTitle("Create account")
         .padding(15)
     }
 }

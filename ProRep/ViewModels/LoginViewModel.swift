@@ -10,6 +10,7 @@ import FirebaseAuth
 import FirebaseFirestore
 
 @MainActor class LoginViewModel: ObservableObject {
+    @Published var isLoading: Bool = false
     @Published var showError: Bool = false
     @Published var showRegistrationForm: Bool = false
     
@@ -19,6 +20,13 @@ import FirebaseFirestore
     
     @Published var loginEmail: String = ""
     @Published var loginPassword: String = ""
+    
+    @Published var emailPrompt: String?
+    @Published var passwordPrompt: String?
+    
+    public var isValid: Bool {
+        Validate.email(loginEmail) == nil && Validate.password(loginPassword) == nil
+    }
     
     // MARK: Public functions
     public func signInWithGoogle() {
@@ -35,11 +43,14 @@ import FirebaseFirestore
     }
     
     public func signInWithEmail() {
+        self.isLoading = true
         SignInWithEmail.sharedInstance.signIn(email: loginEmail, password: loginPassword) { user_id in
             guard let user_id else {
+                self.isLoading = false
                 return
             }
             AuthService.sharedInstance.storeUserdata(user_id: user_id)
+            self.isLoading = false
         }
     }
     

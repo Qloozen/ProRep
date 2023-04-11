@@ -26,16 +26,22 @@ struct LoginView: View {
                 .fontWeight(.bold)
             
             VStack(alignment: .leading, spacing: 20) {
-                UnderlineTextField(icon: "at") {
+                UnderlineTextField(icon: "at", prompt: viewModel.emailPrompt) {
                     TextField("email", text: $viewModel.loginEmail)
                         .keyboardType(.emailAddress)
+                        .onChange(of: viewModel.loginEmail) { newValue in
+                            viewModel.emailPrompt = Validate.email(newValue)
+                        }
                 }
-                    
-                PasswordField(passwordInput: $viewModel.loginPassword)
+                
+                PasswordField(passwordInput: $viewModel.loginPassword, prompt: viewModel.passwordPrompt)
+                    .onChange(of: viewModel.loginPassword) { newValue in
+                        viewModel.passwordPrompt = Validate.password(newValue)
+                    }
             }
             
             VStack(spacing: 15){
-                StyledButton(title: "Login") {
+                StyledButton(title: "Login", isLoading: viewModel.isLoading, disabled: !viewModel.isValid) {
                     print("Login button")
                     viewModel.signInWithEmail()
                 }

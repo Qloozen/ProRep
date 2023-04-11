@@ -28,7 +28,6 @@ struct UnderlineTextField<Content: View>: View {
                     .padding(.trailing, 10)
                 
                 content
-                    .foregroundColor(prompt != nil ? .red : .primary)
 
             }
             if let prompt {

@@ -24,17 +24,27 @@ struct RegistrationView: View {
                 .fontWeight(.bold)
             
             VStack(alignment: .leading, spacing: 20) {
-                UnderlineTextField(icon: "at") {
+                UnderlineTextField(icon: "at", prompt: viewModel.emailPrompt) {
                     TextField("email", text: $viewModel.email)
                         .keyboardType(.emailAddress)
+                        .onChange(of: viewModel.email) { newValue in
+                            viewModel.emailPrompt = Validate.email(newValue)
+                        }
+                        
                 }
     
-                PasswordField(passwordInput: $viewModel.password)
+                PasswordField(passwordInput: $viewModel.password, prompt: viewModel.passwordPrompt)
+                    .onChange(of: viewModel.password) { newValue in
+                        viewModel.passwordPrompt = Validate.password(newValue)
+                    }
                 
-                PasswordField(passwordInput: $viewModel.passwordConfirm)
+                PasswordField(passwordInput: $viewModel.passwordConfirm, prompt: viewModel.passwordConfirmPrompt)
+                    .onChange(of: viewModel.passwordConfirm) { newValue in
+                        viewModel.passwordConfirmPrompt = Validate.confirmPassword(viewModel.password, newValue)
+                    }
             }
             
-            StyledButton(title: "Register") {
+            StyledButton(title: "Register", isLoading: viewModel.isLoading, disabled: !viewModel.isValid) {
                 print("Register Button")
                 viewModel.registerWithEmail()
             }

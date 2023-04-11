@@ -15,6 +15,8 @@ import Foundation
     @Published var height: Double?
     @Published var weight: Double?
 
+    @Published var isLoading: Bool = false
+    
     private var email: String
     private var provider_UID: String
     
@@ -56,13 +58,17 @@ import Foundation
         guard let weight, let height else {
             return
         }
+        self.isLoading = true
+        
         let user = UserModel(provider_UID: provider_UID, name: name, birthday: birthday, current_weight: weight, email: email, height: height, gender: gender)
-        UserService.sharedInstance.createUser(user: user) { result in
+        UserService.sharedInstance.createUser(user: user) { [weak self] result in
             switch result {
             case .success(let user_id):
                 AuthService.sharedInstance.storeUserdata(user_id: user_id)
+                self?.isLoading = false
             case .failure(let failure):
                 print(String(describing: failure))
+                self?.isLoading = false
             }
         }
     }

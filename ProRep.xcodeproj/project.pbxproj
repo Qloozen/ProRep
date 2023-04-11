@@ -11,6 +11,7 @@
 		BF028AE529E4A570003B3338 /* CustomErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF028AE429E4A570003B3338 /* CustomErrors.swift */; };
 		BF2DFC3929E4AF2900E58DE7 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DFC3829E4AF2900E58DE7 /* RegistrationViewModel.swift */; };
 		BF2DFC3B29E4AF3A00E58DE7 /* RegistrationForumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DFC3A29E4AF3A00E58DE7 /* RegistrationForumViewModel.swift */; };
+		BF2DFC3E29E54BDE00E58DE7 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DFC3D29E54BDE00E58DE7 /* Validate.swift */; };
 		BF31097329E359FD004C673D /* CurrentUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31097229E359FD004C673D /* CurrentUserDefaults.swift */; };
 		BF31097529E3652D004C673D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31097429E3652D004C673D /* LoginViewModel.swift */; };
 		BF31097729E36E53004C673D /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31097629E36E53004C673D /* UserService.swift */; };
@@ -44,6 +45,7 @@
 		BF028AE429E4A570003B3338 /* CustomErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrors.swift; sourceTree = "<group>"; };
 		BF2DFC3829E4AF2900E58DE7 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		BF2DFC3A29E4AF3A00E58DE7 /* RegistrationForumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationForumViewModel.swift; sourceTree = "<group>"; };
+		BF2DFC3D29E54BDE00E58DE7 /* Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
 		BF31097229E359FD004C673D /* CurrentUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserDefaults.swift; sourceTree = "<group>"; };
 		BF31097429E3652D004C673D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		BF31097629E36E53004C673D /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			children = (
 				BF31096F29E35481004C673D /* Enums */,
 				BF9F841B29E2E61400B337D0 /* Extensions */,
+				BF2DFC3D29E54BDE00E58DE7 /* Validate.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				BF31097729E36E53004C673D /* UserService.swift in Sources */,
 				BF2DFC3929E4AF2900E58DE7 /* RegistrationViewModel.swift in Sources */,
 				BF9F842629E2F14A00B337D0 /* StyledButton.swift in Sources */,
+				BF2DFC3E29E54BDE00E58DE7 /* Validate.swift in Sources */,
 				BF9F842429E2E8DE00B337D0 /* UnderlineTextField.swift in Sources */,
 				BF9F841929E2E13C00B337D0 /* LoginView.swift in Sources */,
 				BF9EC18529E30F29004CE411 /* RegistrationView.swift in Sources */,

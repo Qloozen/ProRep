@@ -9,14 +9,24 @@ import SwiftUI
 
 struct StyledButton: View {
     var title: String
+    var isLoading: Bool = false
     var color: Color?
+    var disabled: Bool = false
     var action: () -> ()
     
     var body: some View {
-        Button(title, action: action)
-            .background(color == nil ? Color.themedGreen : color)
-            .cornerRadius(10)
-            .buttonStyle(BorderButtonStyle())
+        Button(action: action) {
+            HStack (spacing: 20) {
+                Text(title)
+                if isLoading {
+                    ProgressView().tint(.white)
+                }
+            }.padding(.horizontal, 20)
+        }
+        .disabled(disabled)
+        .background(disabled ? .gray : color == nil ? Color.themedGreen : color)
+        .cornerRadius(10)
+        .buttonStyle(BorderButtonStyle())
     }
 }
 
