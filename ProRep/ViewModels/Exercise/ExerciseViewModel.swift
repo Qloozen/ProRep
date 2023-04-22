@@ -13,6 +13,7 @@ import Foundation
     
     init() {
         self.fetchGroups()
+        self.fetchExercises()
     }
     
     public func fetchGroups() {
@@ -20,6 +21,18 @@ import Foundation
             switch result {
             case .success(let groups):
                 self?.groups = groups
+            case .failure(let failure):
+                print(String(describing: failure))
+                return
+            }
+        }
+    }
+    
+    public func fetchExercises() {
+        ExerciseService.sharedInstance.getAllExercises {[weak self] result in
+            switch result {
+            case .success(let exercises):
+                self?.exercises = exercises
             case .failure(let failure):
                 print(String(describing: failure))
                 return

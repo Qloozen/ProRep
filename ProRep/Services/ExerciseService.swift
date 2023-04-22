@@ -10,6 +10,7 @@ import FirebaseFirestore
 
 enum ExerciseError: Error {
     case failedToGetExercisesForGroup
+    case failedToGetAllExercises
 }
 
 final class ExerciseService {
@@ -37,6 +38,19 @@ final class ExerciseService {
             completionHandler(.success(exercises))
             return
         }
-        
+    }
+    
+    public func getAllExercises(completionHandler: @escaping (Result<[ExerciseModel], Error>) -> Void) {
+        EXERCISE_REF.getDocuments { result, error in
+            guard let result, error == nil else {
+                completionHandler(.failure(ExerciseError.failedToGetAllExercises))
+                return
+            }
+            
+            let exercises = result.documents.compactMap { try? $0.data(as: ExerciseModel.self) }
+            
+            completionHandler(.success(exercises))
+            return
+        }
     }
 }
