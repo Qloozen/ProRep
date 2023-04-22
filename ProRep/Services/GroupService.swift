@@ -10,6 +10,7 @@ import FirebaseFirestore
 
 enum GroupError: Error {
     case failedToGetAllGroups
+    case failedToCreateAGroup
 }
 
 final class GroupService {
@@ -26,7 +27,7 @@ final class GroupService {
     }
     
     public func getAllGroups(completionHandler: @escaping (Result<[ExerciseGroupModel], Error>) -> Void) {
-        GROUP_REF.getDocuments { result, error in
+        GROUP_REF.addSnapshotListener { result, error in
             guard let result, error == nil else {
                 completionHandler(.failure(GroupError.failedToGetAllGroups))
                 return
@@ -34,6 +35,17 @@ final class GroupService {
             let mappedResults = result.documents.compactMap { try? $0.data(as: ExerciseGroupModel.self) }
             completionHandler(.success(mappedResults))
             return
+        }
+    }
+    
+    public func createGroup(group: ExerciseGroupModel, completionHandler: @escaping (Result<String, Error>) -> Void) {
+        do {
+            try GROUP_REF.addDocument(from: group)
+            completionHandler(.success("success"))
+        }
+        catch {
+            print(String(describing: error))
+            completionHandler(.failure(GroupError.failedToCreateAGroup))
         }
     }
 }

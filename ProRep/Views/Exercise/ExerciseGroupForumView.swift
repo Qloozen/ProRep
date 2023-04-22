@@ -1,5 +1,5 @@
 //
-//  ExerciseForumView.swift
+//  ExerciseGroupForumView.swift
 //  ProRep
 //
 //  Created by Qiang Loozen on 22/04/2023.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct ExerciseForumView: View {
+struct ExerciseGroupForumView: View {
     @Environment(\.dismiss) var dismiss
     
-    @StateObject var viewModel = ExerciseForumViewModel()
+    @StateObject var viewModel = ExerciseGroupForumViewModel()
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -38,16 +38,16 @@ struct ExerciseForumView: View {
             
             Spacer()
             
-            StyledButton(title: "Create exercise", isLoading: viewModel.isLoading, disabled: !viewModel.isValid) {
+            StyledButton(title: "Create group", isLoading: viewModel.isLoading, disabled: !viewModel.isValid) {
                 dismiss()
-                viewModel.createExercise()
+                viewModel.createGroup()
             }
         }.padding(20)
     }
 }
 
-struct ExerciseForumView_Previews: PreviewProvider {
+struct ExerciseGroupForumView_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseForumView()
+        ExerciseGroupForumView()
     }
 }

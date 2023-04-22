@@ -20,6 +20,8 @@
 		BF31097B29E3FCE7004C673D /* RegistrationForum.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31097A29E3FCE7004C673D /* RegistrationForum.swift */; };
 		BF476C1E29F45CC200D6C4DC /* ExerciseForumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF476C1D29F45CC200D6C4DC /* ExerciseForumView.swift */; };
 		BF476C2029F45EEE00D6C4DC /* ExerciseForumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF476C1F29F45EEE00D6C4DC /* ExerciseForumViewModel.swift */; };
+		BF476C2229F4849900D6C4DC /* ExerciseGroupForumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF476C2129F4849900D6C4DC /* ExerciseGroupForumView.swift */; };
+		BF476C2429F484AA00D6C4DC /* ExerciseGroupForumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF476C2329F484AA00D6C4DC /* ExerciseGroupForumViewModel.swift */; };
 		BF89E4CB29E9744B00B77FD0 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89E4CA29E9744B00B77FD0 /* DashboardView.swift */; };
 		BF89E4CD29E9839500B77FD0 /* DayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89E4CC29E9839500B77FD0 /* DayButton.swift */; };
 		BF93525D29EBF32800B54FE5 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93525C29EBF32800B54FE5 /* DashboardViewModel.swift */; };
@@ -68,6 +70,8 @@
 		BF31097A29E3FCE7004C673D /* RegistrationForum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationForum.swift; sourceTree = "<group>"; };
 		BF476C1D29F45CC200D6C4DC /* ExerciseForumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseForumView.swift; sourceTree = "<group>"; };
 		BF476C1F29F45EEE00D6C4DC /* ExerciseForumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseForumViewModel.swift; sourceTree = "<group>"; };
+		BF476C2129F4849900D6C4DC /* ExerciseGroupForumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGroupForumView.swift; sourceTree = "<group>"; };
+		BF476C2329F484AA00D6C4DC /* ExerciseGroupForumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGroupForumViewModel.swift; sourceTree = "<group>"; };
 		BF89E4CA29E9744B00B77FD0 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		BF89E4CC29E9839500B77FD0 /* DayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButton.swift; sourceTree = "<group>"; };
 		BF93525C29EBF32800B54FE5 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
@@ -291,6 +295,7 @@
 			children = (
 				BFBAB2F529F42B940077F233 /* ExerciseView.swift */,
 				BF476C1D29F45CC200D6C4DC /* ExerciseForumView.swift */,
+				BF476C2129F4849900D6C4DC /* ExerciseGroupForumView.swift */,
 			);
 			path = Exercise;
 			sourceTree = "<group>";
@@ -300,6 +305,7 @@
 			children = (
 				BFBAB2F829F43ADE0077F233 /* ExerciseViewModel.swift */,
 				BF476C1F29F45EEE00D6C4DC /* ExerciseForumViewModel.swift */,
+				BF476C2329F484AA00D6C4DC /* ExerciseGroupForumViewModel.swift */,
 			);
 			path = Exercise;
 			sourceTree = "<group>";
@@ -392,10 +398,12 @@
 				BF31097729E36E53004C673D /* UserService.swift in Sources */,
 				BF2DFC3929E4AF2900E58DE7 /* RegistrationViewModel.swift in Sources */,
 				BF9F842629E2F14A00B337D0 /* StyledButton.swift in Sources */,
+				BF476C2229F4849900D6C4DC /* ExerciseGroupForumView.swift in Sources */,
 				BFBAB2F229F3E9CF0077F233 /* ExerciseService.swift in Sources */,
 				BF2DFC3E29E54BDE00E58DE7 /* Validate.swift in Sources */,
 				BF9F842429E2E8DE00B337D0 /* UnderlineTextField.swift in Sources */,
 				BFEA095A29EC420A0075C4CB /* ScheduleService.swift in Sources */,
+				BF476C2429F484AA00D6C4DC /* ExerciseGroupForumViewModel.swift in Sources */,
 				BF9F841929E2E13C00B337D0 /* LoginView.swift in Sources */,
 				BF9EC18529E30F29004CE411 /* RegistrationView.swift in Sources */,
 				BF028AE329E4A419003B3338 /* SignInWithEmail.swift in Sources */,

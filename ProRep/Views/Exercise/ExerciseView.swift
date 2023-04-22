@@ -10,7 +10,8 @@ import SwiftUI
 struct ExerciseView: View {
     @StateObject var viewModel = ExerciseViewModel()
     @State var showExerciseForum = false
-    
+    @State var showExerciseGroupForum = false
+
     private let gridItems: [GridItem] = [
         GridItem(.flexible(), spacing: 20, alignment: .leading),
         GridItem(.flexible(), spacing: 20, alignment: .trailing),
@@ -18,7 +19,16 @@ struct ExerciseView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 30) {
-                Text("Groups")
+                HStack {
+                    Text("Groups")
+                    Spacer()
+                    Button("Add Group") {
+                        showExerciseGroupForum.toggle()
+                    }
+                    .fullScreenCover(isPresented: $showExerciseGroupForum) {
+                        ExerciseGroupForumView()
+                    }
+                }
                 
                 LazyVGrid(columns: gridItems, spacing: 20) {
                     ForEach(viewModel.groups, id: \.id) { group in
