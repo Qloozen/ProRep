@@ -23,14 +23,16 @@ struct ContentView: View {
                         Text("Dashboard")
                     }
                 }
-                Text("Home")
-                    .tabItem {
-                        Text("Dashboard")
-                    }
-                Text("Exercises")
-                    .tabItem {
+                NavigationStack {
+                    ExerciseView()
+                }
+                .tabItem {
+                    VStack {
+                        Image(systemName: "dumbbell.fill")
                         Text("Exercises")
                     }
+                }
+
                 Button("Logout", action: {
                     AuthService.sharedInstance.logOutUser { success in
                         

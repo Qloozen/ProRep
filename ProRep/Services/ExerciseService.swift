@@ -9,13 +9,8 @@ import Foundation
 import FirebaseFirestore
 
 enum ExerciseError: Error {
-    case failedToGetExercises
+    case failedToGetExercisesForGroup
 }
-
-enum ExerciseFields: String {
-    case name, description
-}
-
 
 final class ExerciseService {
     
@@ -33,16 +28,11 @@ final class ExerciseService {
     public func getExercises(from ids: [String], completionHandler: @escaping (Result<[ExerciseModel], Error>) -> Void) {
         EXERCISE_REF.whereField(FieldPath.documentID(), in: ids).getDocuments { result, error in
             guard let result, error == nil else {
-                completionHandler(.failure(ExerciseError.failedToGetExercises))
+                completionHandler(.failure(ExerciseError.failedToGetExercisesForGroup))
                 return
             }
             
-            let exercises = result.documents.compactMap { document in
-                let data = document.data()
-                let name = data[ExerciseFields.name.rawValue] as? String ?? ""
-                let description = data[ExerciseFields.description.rawValue] as? String ?? ""
-                return ExerciseModel(name: name, description: description)
-            }
+            let exercises = result.documents.compactMap { try? $0.data(as: ExerciseModel.self) }
             
             completionHandler(.success(exercises))
             return

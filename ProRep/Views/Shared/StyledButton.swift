@@ -36,8 +36,6 @@ struct BorderButtonStyle: ButtonStyle {
             .padding(15)
             .frame(maxWidth: .infinity)
             .foregroundColor(Color.white)
-            .fontWeight(.bold)
-            .font(.system(size: 18))
     }
 }
 
