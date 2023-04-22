@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 @MainActor class RegistrationForumViewModel: ObservableObject {
     // MARK: Properties
@@ -60,7 +61,17 @@ import Foundation
         }
         self.isLoading = true
         
-        let user = UserModel(provider_UID: provider_UID, name: name, birthday: birthday, current_weight: weight, email: email, height: height, gender: gender)
+        let schedule: [String: String?] = [
+            ScheduleDay.monday.rawValue: nil,
+            ScheduleDay.tuesday.rawValue: nil,
+            ScheduleDay.wednesday.rawValue: nil,
+            ScheduleDay.thursday.rawValue: nil,
+            ScheduleDay.friday.rawValue: nil,
+            ScheduleDay.saturday.rawValue: nil,
+            ScheduleDay.sunday.rawValue: nil
+        ]
+        
+        let user = UserModel(provider_UID: provider_UID, name: name, birthday: birthday, current_weight: weight, email: email, height: height, gender: gender, schedule: schedule)
         UserService.sharedInstance.createUser(user: user) { [weak self] result in
             switch result {
             case .success(let user_id):

@@ -14,9 +14,18 @@ struct ContentView: View {
         if user != nil {
             // Main app
             TabView {
+                NavigationStack {
+                    DashboardView()
+                }
+                .tabItem {
+                    VStack {
+                        Image(systemName: "clipboard.fill")
+                        Text("Dashboard")
+                    }
+                }
                 Text("Home")
                     .tabItem {
-                        Text("Home")
+                        Text("Dashboard")
                     }
                 Text("Exercises")
                     .tabItem {

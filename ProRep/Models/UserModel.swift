@@ -7,9 +7,11 @@
 
 import Foundation
 import FirebaseFirestoreSwift
+import FirebaseFirestore
 
 struct UserModel: Codable {
     @DocumentID var id: String?
+    @ServerTimestamp var date_created: Date?
     var provider_UID: String
     var name: String
     var birthday: Date?
@@ -17,9 +19,13 @@ struct UserModel: Codable {
     var email: String
     var height: Double
     var gender: Gender
-    @ServerTimestamp var date_created: Date?
+    var schedule: [String: String?]
 }
 
-enum Gender: String, Codable, CaseIterable {
+public enum ScheduleDay: String, Codable, CaseIterable {
+    case monday, tuesday, wednesday, thursday, friday, saturday, sunday
+}
+
+public enum Gender: String, Codable, CaseIterable {
     case male, female, other
 }

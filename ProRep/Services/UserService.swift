@@ -32,14 +32,9 @@ final class UserService {
         }
     }
     
-    // MARK: Public
     public func getUserById(id: String, completionHandler: @escaping (Result<UserModel, Error>) -> Void) {
         REF_USERS.document(id).getDocument(as: UserModel.self) { result in
             completionHandler(result)
         }
     }
-    
-    // MARK: Private
-    
-
 }

@@ -65,7 +65,6 @@ import FirebaseFirestore
             self?.provider_UID = provider_UID
             
             if let user_id, !isNewUser {
-                print("Existing user")
                 AuthService.sharedInstance.storeUserdata(user_id: user_id)
             } else {
                 self?.showRegistrationForm.toggle()
