@@ -19,6 +19,19 @@ import FirebaseFirestore
             return schedule[selectedDay.rawValue, default: nil]
         }
     }
+    
+    public var displayHeader: String {
+        get {
+            if selectedGroup == nil {
+                return "No exercises planned"
+            }
+            else if Date().getScheduleday() == selectedDay {
+                return "Today's exercises"
+            } else {
+                return selectedDay.rawValue.capitalized + " exercises"
+            }
+        }
+    }
 
     private var userId = UserDefaults.standard.string(forKey: CurrentUserDefaults.user_id.rawValue)
     

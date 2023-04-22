@@ -43,6 +43,9 @@
 		BF9F842429E2E8DE00B337D0 /* UnderlineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F842329E2E8DE00B337D0 /* UnderlineTextField.swift */; };
 		BF9F842629E2F14A00B337D0 /* StyledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F842529E2F14A00B337D0 /* StyledButton.swift */; };
 		BF9F842829E2F4E500B337D0 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F842729E2F4E500B337D0 /* ColorExtensions.swift */; };
+		BFBAB2EE29F3C80A0077F233 /* OutlinedExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAB2ED29F3C80A0077F233 /* OutlinedExerciseCard.swift */; };
+		BFBAB2F029F3C8270077F233 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAB2EF29F3C8270077F233 /* ExerciseModel.swift */; };
+		BFBAB2F229F3E9CF0077F233 /* ExerciseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAB2F129F3E9CF0077F233 /* ExerciseService.swift */; };
 		BFEA095A29EC420A0075C4CB /* ScheduleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA095929EC420A0075C4CB /* ScheduleService.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +80,9 @@
 		BF9F842329E2E8DE00B337D0 /* UnderlineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineTextField.swift; sourceTree = "<group>"; };
 		BF9F842529E2F14A00B337D0 /* StyledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledButton.swift; sourceTree = "<group>"; };
 		BF9F842729E2F4E500B337D0 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		BFBAB2ED29F3C80A0077F233 /* OutlinedExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlinedExerciseCard.swift; sourceTree = "<group>"; };
+		BFBAB2EF29F3C8270077F233 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
+		BFBAB2F129F3E9CF0077F233 /* ExerciseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseService.swift; sourceTree = "<group>"; };
 		BFEA095929EC420A0075C4CB /* ScheduleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +119,7 @@
 			children = (
 				BF89E4CA29E9744B00B77FD0 /* DashboardView.swift */,
 				BF89E4CC29E9839500B77FD0 /* DayButton.swift */,
+				BFBAB2ED29F3C80A0077F233 /* OutlinedExerciseCard.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -210,6 +217,7 @@
 			children = (
 				BF31097829E3F9AC004C673D /* UserModel.swift */,
 				BF93526129EBF96F00B54FE5 /* ExerciseGroupModel.swift */,
+				BFBAB2EF29F3C8270077F233 /* ExerciseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -221,6 +229,7 @@
 				BF9EC1A629E348A5004CE411 /* AuthService.swift */,
 				BF31097629E36E53004C673D /* UserService.swift */,
 				BFEA095929EC420A0075C4CB /* ScheduleService.swift */,
+				BFBAB2F129F3E9CF0077F233 /* ExerciseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -352,6 +361,7 @@
 				BF31097729E36E53004C673D /* UserService.swift in Sources */,
 				BF2DFC3929E4AF2900E58DE7 /* RegistrationViewModel.swift in Sources */,
 				BF9F842629E2F14A00B337D0 /* StyledButton.swift in Sources */,
+				BFBAB2F229F3E9CF0077F233 /* ExerciseService.swift in Sources */,
 				BF2DFC3E29E54BDE00E58DE7 /* Validate.swift in Sources */,
 				BF9F842429E2E8DE00B337D0 /* UnderlineTextField.swift in Sources */,
 				BFEA095A29EC420A0075C4CB /* ScheduleService.swift in Sources */,
@@ -359,6 +369,8 @@
 				BF9EC18529E30F29004CE411 /* RegistrationView.swift in Sources */,
 				BF028AE329E4A419003B3338 /* SignInWithEmail.swift in Sources */,
 				BF9EC19F29E33821004CE411 /* SignInWithGoogle.swift in Sources */,
+				BFBAB2EE29F3C80A0077F233 /* OutlinedExerciseCard.swift in Sources */,
+				BFBAB2F029F3C8270077F233 /* ExerciseModel.swift in Sources */,
 				BF028AE529E4A570003B3338 /* CustomErrors.swift in Sources */,
 				BF89E4CB29E9744B00B77FD0 /* DashboardView.swift in Sources */,
 				BF31097B29E3FCE7004C673D /* RegistrationForum.swift in Sources */,

@@ -24,18 +24,14 @@ struct DashboardView: View {
                     val.scrollTo(Date().getScheduleday(), anchor: .center)
                 }
             }
+            Text(viewmodel.displayHeader)
+                .font(.headline)
             if let group = viewmodel.selectedGroup {
-                VStack(alignment: .center){
-                    Text(group.name).font(.title2)
-                    Text(group.description).font(.caption)
-
-                }
-                .frame(maxWidth: .infinity)
-                
-                ForEach(["Fake exercise 1", "Fake exercise 2", "Fake exercise 3"], id: \.self) { exercise in
-                    Text(exercise)
+                ForEach(viewmodel.selectedGroup?.exercises ?? [], id: \.id) { exercise in
+                    OutlinedExerciseCard(exercise: exercise)
                 }
             }
+            
             Spacer()
         }
         .padding(20)

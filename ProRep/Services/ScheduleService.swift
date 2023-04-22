@@ -35,34 +35,38 @@ final class ScheduleService {
             ScheduleDay.sunday.rawValue: nil,
         ]
         
-        var i = 0
+        let dispatch = DispatchGroup()
+        
         for key in scheduleResult.keys {
             let groupId = scheduleResult[key]!
-            guard let groupId else {
-                if i == scheduleResult.keys.count - 1 {
-                        completionHandler(.success(schedule))
-                    return
-                }
-                i += 1
-                continue
-            }
+            guard let groupId else { continue }
+            dispatch.enter()
             
             GROUP_REF.document(groupId).getDocument(as: ExerciseGroupModel.self) { result in
                 switch result {
-                    case .success(let model):
-                        schedule[key] = model
-                        if i == scheduleResult.keys.count - 1 {
-                                completionHandler(.success(schedule))
+                    case .success(var groupModel):
+                    ExerciseService.sharedInstance.getExercises(from: groupModel.exercise_ids) { exerciseResults in
+                        switch exerciseResults {
+                        case .success(let exercises):
+                            groupModel.exercises = exercises
+                            schedule[key] = groupModel
+                            dispatch.leave()
+                        case .failure(let failure):
+                            print(String(describing: failure))
+                            completionHandler(.failure(ScheduleError.failedToGetSchedule))
                             return
                         }
-                    i += 1
+                    }
                     case .failure(let failure):
                         print(String(describing: failure))
                         completionHandler(.failure(ScheduleError.failedToGetSchedule))
                         return
                 }
             }
-            
+        }
+        
+        dispatch.notify(queue: DispatchQueue.main) {
+            completionHandler(.success(schedule))
         }
     }
 }
