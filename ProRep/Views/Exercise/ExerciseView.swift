@@ -9,12 +9,14 @@ import SwiftUI
 
 struct ExerciseView: View {
     @StateObject var viewModel = ExerciseViewModel()
+    @State var showExerciseForum = false
+    
     private let gridItems: [GridItem] = [
-        GridItem(.flexible(), alignment: .leading),
-        GridItem(.flexible(), alignment: .trailing),
+        GridItem(.flexible(), spacing: 20, alignment: .leading),
+        GridItem(.flexible(), spacing: 20, alignment: .trailing),
     ]
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 30) {
                 Text("Groups")
                 
@@ -24,7 +26,7 @@ struct ExerciseView: View {
                             
                         }
                         .padding(30)
-                        .frame(width: 150)
+                        .frame(maxWidth: .infinity)
                         .lineLimit(1)
                         .font(.system(size: 12, weight: .bold))
                         .foregroundColor(.primary)
@@ -33,7 +35,18 @@ struct ExerciseView: View {
                     }
                 }
                 
-                Text("Exercises")
+                HStack {
+                    Text("Exercises")
+                    
+                    Spacer()
+                    
+                    Button("Add exercise") {
+                        showExerciseForum.toggle()
+                    }
+                    .fullScreenCover(isPresented: $showExerciseForum) {
+                        ExerciseForumView()
+                    }
+                }
                 
                 LazyVStack {
                     ForEach(viewModel.exercises, id: \.id) { exercise in

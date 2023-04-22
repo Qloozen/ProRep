@@ -18,6 +18,8 @@
 		BF31097729E36E53004C673D /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31097629E36E53004C673D /* UserService.swift */; };
 		BF31097929E3F9AC004C673D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31097829E3F9AC004C673D /* UserModel.swift */; };
 		BF31097B29E3FCE7004C673D /* RegistrationForum.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF31097A29E3FCE7004C673D /* RegistrationForum.swift */; };
+		BF476C1E29F45CC200D6C4DC /* ExerciseForumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF476C1D29F45CC200D6C4DC /* ExerciseForumView.swift */; };
+		BF476C2029F45EEE00D6C4DC /* ExerciseForumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF476C1F29F45EEE00D6C4DC /* ExerciseForumViewModel.swift */; };
 		BF89E4CB29E9744B00B77FD0 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89E4CA29E9744B00B77FD0 /* DashboardView.swift */; };
 		BF89E4CD29E9839500B77FD0 /* DayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89E4CC29E9839500B77FD0 /* DayButton.swift */; };
 		BF93525D29EBF32800B54FE5 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93525C29EBF32800B54FE5 /* DashboardViewModel.swift */; };
@@ -64,6 +66,8 @@
 		BF31097629E36E53004C673D /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		BF31097829E3F9AC004C673D /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		BF31097A29E3FCE7004C673D /* RegistrationForum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationForum.swift; sourceTree = "<group>"; };
+		BF476C1D29F45CC200D6C4DC /* ExerciseForumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseForumView.swift; sourceTree = "<group>"; };
+		BF476C1F29F45EEE00D6C4DC /* ExerciseForumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseForumViewModel.swift; sourceTree = "<group>"; };
 		BF89E4CA29E9744B00B77FD0 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		BF89E4CC29E9839500B77FD0 /* DayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButton.swift; sourceTree = "<group>"; };
 		BF93525C29EBF32800B54FE5 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
@@ -286,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				BFBAB2F529F42B940077F233 /* ExerciseView.swift */,
+				BF476C1D29F45CC200D6C4DC /* ExerciseForumView.swift */,
 			);
 			path = Exercise;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				BFBAB2F829F43ADE0077F233 /* ExerciseViewModel.swift */,
+				BF476C1F29F45EEE00D6C4DC /* ExerciseForumViewModel.swift */,
 			);
 			path = Exercise;
 			sourceTree = "<group>";
@@ -394,6 +400,7 @@
 				BF9EC18529E30F29004CE411 /* RegistrationView.swift in Sources */,
 				BF028AE329E4A419003B3338 /* SignInWithEmail.swift in Sources */,
 				BF9EC19F29E33821004CE411 /* SignInWithGoogle.swift in Sources */,
+				BF476C1E29F45CC200D6C4DC /* ExerciseForumView.swift in Sources */,
 				BFBAB2FB29F43C550077F233 /* GroupService.swift in Sources */,
 				BFBAB2EE29F3C80A0077F233 /* OutlinedExerciseCard.swift in Sources */,
 				BFBAB2F029F3C8270077F233 /* ExerciseModel.swift in Sources */,
@@ -404,6 +411,7 @@
 				BF9EC18729E328D2004CE411 /* PasswordField.swift in Sources */,
 				BF93525D29EBF32800B54FE5 /* DashboardViewModel.swift in Sources */,
 				BFBAB2F929F43ADE0077F233 /* ExerciseViewModel.swift in Sources */,
+				BF476C2029F45EEE00D6C4DC /* ExerciseForumViewModel.swift in Sources */,
 				BF31097529E3652D004C673D /* LoginViewModel.swift in Sources */,
 				BF31097329E359FD004C673D /* CurrentUserDefaults.swift in Sources */,
 				BF93526229EBF96F00B54FE5 /* ExerciseGroupModel.swift in Sources */,

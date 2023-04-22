@@ -11,6 +11,7 @@ import FirebaseFirestore
 enum ExerciseError: Error {
     case failedToGetExercisesForGroup
     case failedToGetAllExercises
+    case failedToCreateAnExercise
 }
 
 final class ExerciseService {
@@ -41,7 +42,7 @@ final class ExerciseService {
     }
     
     public func getAllExercises(completionHandler: @escaping (Result<[ExerciseModel], Error>) -> Void) {
-        EXERCISE_REF.getDocuments { result, error in
+        EXERCISE_REF.addSnapshotListener { result, error in
             guard let result, error == nil else {
                 completionHandler(.failure(ExerciseError.failedToGetAllExercises))
                 return
@@ -51,6 +52,17 @@ final class ExerciseService {
             
             completionHandler(.success(exercises))
             return
+        }
+    }
+    
+    public func createExercise(exercise: ExerciseModel, completionHandler: @escaping (Result<String, Error>) -> Void) {
+        do {
+            try EXERCISE_REF.addDocument(from: exercise)
+            completionHandler(.success("success"))
+        }
+        catch {
+            print(String(describing: error))
+            completionHandler(.failure(ExerciseError.failedToCreateAnExercise))
         }
     }
 }

@@ -36,3 +36,27 @@ class Validate {
         return "Passwords do not match!"
     }
 }
+
+extension Validate {
+    public static func exerciseName(_ name: String) -> String? {
+        if name.count > 20 {
+            return "Name must be less then 20 characters"
+        }
+        else if name.isEmpty {
+            return "Name is required"
+        }
+        
+        return nil
+    }
+    
+    public static func exerciseDescription(_ description: String) -> String? {
+        if description.count > 100 {
+            return "Description must be less then 100 characters"
+        }
+        else if description.isEmpty {
+            return "Description is required"
+        }
+        
+        return nil
+    }
+}
