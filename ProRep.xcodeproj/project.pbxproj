@@ -22,6 +22,9 @@
 		BF476C2029F45EEE00D6C4DC /* ExerciseForumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF476C1F29F45EEE00D6C4DC /* ExerciseForumViewModel.swift */; };
 		BF476C2229F4849900D6C4DC /* ExerciseGroupForumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF476C2129F4849900D6C4DC /* ExerciseGroupForumView.swift */; };
 		BF476C2429F484AA00D6C4DC /* ExerciseGroupForumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF476C2329F484AA00D6C4DC /* ExerciseGroupForumViewModel.swift */; };
+		BF476C2729F48C1400D6C4DC /* ExerciseGroupDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF476C2629F48C1400D6C4DC /* ExerciseGroupDetailView.swift */; };
+		BF476C2929F48E6900D6C4DC /* ExerciseRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF476C2829F48E6900D6C4DC /* ExerciseRowView.swift */; };
+		BF476C2B29F4918200D6C4DC /* UnassignedDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF476C2A29F4918200D6C4DC /* UnassignedDayView.swift */; };
 		BF89E4CB29E9744B00B77FD0 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89E4CA29E9744B00B77FD0 /* DashboardView.swift */; };
 		BF89E4CD29E9839500B77FD0 /* DayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89E4CC29E9839500B77FD0 /* DayButton.swift */; };
 		BF93525D29EBF32800B54FE5 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93525C29EBF32800B54FE5 /* DashboardViewModel.swift */; };
@@ -72,6 +75,9 @@
 		BF476C1F29F45EEE00D6C4DC /* ExerciseForumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseForumViewModel.swift; sourceTree = "<group>"; };
 		BF476C2129F4849900D6C4DC /* ExerciseGroupForumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGroupForumView.swift; sourceTree = "<group>"; };
 		BF476C2329F484AA00D6C4DC /* ExerciseGroupForumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGroupForumViewModel.swift; sourceTree = "<group>"; };
+		BF476C2629F48C1400D6C4DC /* ExerciseGroupDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGroupDetailView.swift; sourceTree = "<group>"; };
+		BF476C2829F48E6900D6C4DC /* ExerciseRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRowView.swift; sourceTree = "<group>"; };
+		BF476C2A29F4918200D6C4DC /* UnassignedDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnassignedDayView.swift; sourceTree = "<group>"; };
 		BF89E4CA29E9744B00B77FD0 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		BF89E4CC29E9839500B77FD0 /* DayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButton.swift; sourceTree = "<group>"; };
 		BF93525C29EBF32800B54FE5 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
@@ -128,12 +134,21 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		BF476C2529F48BED00D6C4DC /* ExerciseGroupDetail */ = {
+			isa = PBXGroup;
+			children = (
+				BF476C2629F48C1400D6C4DC /* ExerciseGroupDetailView.swift */,
+			);
+			path = ExerciseGroupDetail;
+			sourceTree = "<group>";
+		};
 		BF89E4C929E9743B00B77FD0 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
 				BF89E4CA29E9744B00B77FD0 /* DashboardView.swift */,
 				BF89E4CC29E9839500B77FD0 /* DayButton.swift */,
 				BFBAB2ED29F3C80A0077F233 /* OutlinedExerciseCard.swift */,
+				BF476C2A29F4918200D6C4DC /* UnassignedDayView.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -210,6 +225,7 @@
 		BF9F841229E2D28300B337D0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BF476C2529F48BED00D6C4DC /* ExerciseGroupDetail */,
 				BFBAB2F329F42B6E0077F233 /* Exercise */,
 				BF89E4C929E9743B00B77FD0 /* Dashboard */,
 				BF9F842029E2E8A600B337D0 /* Shared */,
@@ -296,6 +312,7 @@
 				BFBAB2F529F42B940077F233 /* ExerciseView.swift */,
 				BF476C1D29F45CC200D6C4DC /* ExerciseForumView.swift */,
 				BF476C2129F4849900D6C4DC /* ExerciseGroupForumView.swift */,
+				BF476C2829F48E6900D6C4DC /* ExerciseRowView.swift */,
 			);
 			path = Exercise;
 			sourceTree = "<group>";
@@ -406,15 +423,18 @@
 				BF476C2429F484AA00D6C4DC /* ExerciseGroupForumViewModel.swift in Sources */,
 				BF9F841929E2E13C00B337D0 /* LoginView.swift in Sources */,
 				BF9EC18529E30F29004CE411 /* RegistrationView.swift in Sources */,
+				BF476C2929F48E6900D6C4DC /* ExerciseRowView.swift in Sources */,
 				BF028AE329E4A419003B3338 /* SignInWithEmail.swift in Sources */,
 				BF9EC19F29E33821004CE411 /* SignInWithGoogle.swift in Sources */,
 				BF476C1E29F45CC200D6C4DC /* ExerciseForumView.swift in Sources */,
+				BF476C2B29F4918200D6C4DC /* UnassignedDayView.swift in Sources */,
 				BFBAB2FB29F43C550077F233 /* GroupService.swift in Sources */,
 				BFBAB2EE29F3C80A0077F233 /* OutlinedExerciseCard.swift in Sources */,
 				BFBAB2F029F3C8270077F233 /* ExerciseModel.swift in Sources */,
 				BF028AE529E4A570003B3338 /* CustomErrors.swift in Sources */,
 				BF89E4CB29E9744B00B77FD0 /* DashboardView.swift in Sources */,
 				BF31097B29E3FCE7004C673D /* RegistrationForum.swift in Sources */,
+				BF476C2729F48C1400D6C4DC /* ExerciseGroupDetailView.swift in Sources */,
 				BF9F840729E2C30F00B337D0 /* ContentView.swift in Sources */,
 				BF9EC18729E328D2004CE411 /* PasswordField.swift in Sources */,
 				BF93525D29EBF32800B54FE5 /* DashboardViewModel.swift in Sources */,

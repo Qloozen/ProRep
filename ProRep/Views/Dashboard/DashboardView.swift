@@ -24,8 +24,21 @@ struct DashboardView: View {
                     val.scrollTo(Date().getScheduleday(), anchor: .center)
                 }
             }
-            Text(viewmodel.displayHeader)
-                .font(.headline)
+            
+            HStack {
+                Text(viewmodel.displayHeader)
+                    .font(.headline)
+                Spacer()
+                NavigationLink("Details") {
+                    if let group = viewmodel.selectedGroup {
+                        ExerciseGroupDetailView(group: group)
+                    } else {
+                        UnassignedDayView()
+                    }
+                }
+
+            }
+
             if let group = viewmodel.selectedGroup {
                 ForEach(viewmodel.selectedGroup?.exercises ?? [], id: \.id) { exercise in
                     OutlinedExerciseCard(exercise: exercise)
