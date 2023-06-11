@@ -10,6 +10,9 @@
 		BF028AE329E4A419003B3338 /* SignInWithEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF028AE229E4A419003B3338 /* SignInWithEmail.swift */; };
 		BF028AE529E4A570003B3338 /* CustomErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF028AE429E4A570003B3338 /* CustomErrors.swift */; };
 		BF0A0D3529F309CA0061C982 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A0D3429F309CA0061C982 /* DateExtensions.swift */; };
+		BF23A1ED2A35132400C703C9 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23A1EC2A35132400C703C9 /* APIService.swift */; };
+		BF23A1EF2A351A2200C703C9 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23A1EE2A351A2200C703C9 /* APIRequest.swift */; };
+		BF23A1F12A35D75900C703C9 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23A1F02A35D75900C703C9 /* ResponseModel.swift */; };
 		BF2DFC3929E4AF2900E58DE7 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DFC3829E4AF2900E58DE7 /* RegistrationViewModel.swift */; };
 		BF2DFC3B29E4AF3A00E58DE7 /* RegistrationForumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DFC3A29E4AF3A00E58DE7 /* RegistrationForumViewModel.swift */; };
 		BF2DFC3E29E54BDE00E58DE7 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DFC3D29E54BDE00E58DE7 /* Validate.swift */; };
@@ -60,6 +63,9 @@
 		BF028AE229E4A419003B3338 /* SignInWithEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithEmail.swift; sourceTree = "<group>"; };
 		BF028AE429E4A570003B3338 /* CustomErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrors.swift; sourceTree = "<group>"; };
 		BF0A0D3429F309CA0061C982 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		BF23A1EC2A35132400C703C9 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		BF23A1EE2A351A2200C703C9 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		BF23A1F02A35D75900C703C9 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		BF2DFC3829E4AF2900E58DE7 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		BF2DFC3A29E4AF3A00E58DE7 /* RegistrationForumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationForumViewModel.swift; sourceTree = "<group>"; };
 		BF2DFC3D29E54BDE00E58DE7 /* Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
@@ -119,6 +125,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF23A1EB2A35130B00C703C9 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				BF23A1EC2A35132400C703C9 /* APIService.swift */,
+				BF23A1EE2A351A2200C703C9 /* APIRequest.swift */,
+				BF23A1F02A35D75900C703C9 /* ResponseModel.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		BF31096F29E35481004C673D /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +257,7 @@
 		BF9F841529E2D2A500B337D0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				BF23A1EB2A35130B00C703C9 /* API */,
 				BF9EC19D29E337EE004CE411 /* SignInProviders */,
 				BF9EC1A629E348A5004CE411 /* AuthService.swift */,
 				BF31097629E36E53004C673D /* UserService.swift */,
@@ -401,11 +418,13 @@
 				BF476C2229F4849900D6C4DC /* ExerciseGroupForumView.swift in Sources */,
 				BFBAB2F229F3E9CF0077F233 /* ExerciseService.swift in Sources */,
 				BF2DFC3E29E54BDE00E58DE7 /* Validate.swift in Sources */,
+				BF23A1EF2A351A2200C703C9 /* APIRequest.swift in Sources */,
 				BF9F842429E2E8DE00B337D0 /* UnderlineTextField.swift in Sources */,
 				BFEA095A29EC420A0075C4CB /* ScheduleService.swift in Sources */,
 				BF476C2429F484AA00D6C4DC /* ExerciseGroupForumViewModel.swift in Sources */,
 				BF9F841929E2E13C00B337D0 /* LoginView.swift in Sources */,
 				BF9EC18529E30F29004CE411 /* RegistrationView.swift in Sources */,
+				BF23A1ED2A35132400C703C9 /* APIService.swift in Sources */,
 				BF028AE329E4A419003B3338 /* SignInWithEmail.swift in Sources */,
 				BF9EC19F29E33821004CE411 /* SignInWithGoogle.swift in Sources */,
 				BF476C1E29F45CC200D6C4DC /* ExerciseForumView.swift in Sources */,
@@ -415,6 +434,7 @@
 				BF028AE529E4A570003B3338 /* CustomErrors.swift in Sources */,
 				BF89E4CB29E9744B00B77FD0 /* DashboardView.swift in Sources */,
 				BF31097B29E3FCE7004C673D /* RegistrationForum.swift in Sources */,
+				BF23A1F12A35D75900C703C9 /* ResponseModel.swift in Sources */,
 				BF9F840729E2C30F00B337D0 /* ContentView.swift in Sources */,
 				BF9EC18729E328D2004CE411 /* PasswordField.swift in Sources */,
 				BF93525D29EBF32800B54FE5 /* DashboardViewModel.swift in Sources */,
