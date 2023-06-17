@@ -46,7 +46,7 @@ final class APIRequest {
     }
     
     // MARK: INIT
-    init(urlPath: String, httpMethod: HttpMethod, body: String?) {
+    init(urlPath: String, httpMethod: HttpMethod = .GET, body: String?) {
         self.urlPath = urlPath
         self.httpMethod = httpMethod
         self.body = body

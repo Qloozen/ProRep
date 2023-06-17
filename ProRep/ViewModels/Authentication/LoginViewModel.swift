@@ -29,16 +29,15 @@ import FirebaseFirestore
     }
     
     // MARK: Public functions
-    public func signInWithGoogle() {
-        SignInWithGoogle.sharedInstance.signIn { credential, name, email in
-            guard let credential, let name, let email else {
-                self.showError.toggle()
-                return
-            }
-            
-            self.name = name
+    public func signInWithGoogle() async {
+        do {
+            let (credential, name, email) = try await SignInWithGoogle.sharedInstance.signIn()
             self.email = email
+            self.name = name
             self.signInToFirebase(credential: credential)
+        } catch {
+            self.showError.toggle()
+            return
         }
     }
     

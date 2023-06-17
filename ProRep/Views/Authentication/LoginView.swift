@@ -71,7 +71,9 @@ struct LoginView: View {
 
                 Button {
                     print("sign in with Google")
-                    viewModel.signInWithGoogle()
+                    Task {
+                        await viewModel.signInWithGoogle()
+                    }
                 } label: {
                     HStack {
                         Image("google")

@@ -7,6 +7,7 @@
 
 import Foundation
 
-enum SignInError: Error {
+enum AuthError: Error {
+    case googleSignInError
     case failedToSignInWithEmail
 }
