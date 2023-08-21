@@ -18,8 +18,12 @@ struct RegistrationForum: View {
             VStack(alignment: .leading, spacing: 20) {
                 Form {
                     Section {
-                        UnderlineTextField(icon: "person", prompt: viewModel.namePrompt) {
-                            TextField("Your name", text: $viewModel.name)
+                        UnderlineTextField(icon: "person", prompt: viewModel.firstnamePrompt) {
+                            TextField("Firstname", text: $viewModel.firstname)
+                        }
+                        
+                        UnderlineTextField(icon: "person", prompt: viewModel.lastnamePrompt) {
+                            TextField("Lastname", text: $viewModel.lastname)
                         }
                     
                         UnderlineTextField(icon: "birthday.cake") {
@@ -59,7 +63,7 @@ struct RegistrationForum: View {
 
             StyledButton(title: "Account maken", isLoading: viewModel.isLoading, disabled: !viewModel.isValid) {
                 print("Create account")
-                viewModel.createAccount()
+                Task {await viewModel.createAccount()}
                 dismiss()
             }
         }
@@ -69,7 +73,7 @@ struct RegistrationForum: View {
 
 struct RegistrationForum_Previews: PreviewProvider {
     static var previews: some View {
-        @StateObject var vm = RegistrationForumViewModel(name: "", email: "email@email.com", provider_UID: "123")
+        @StateObject var vm = RegistrationForumViewModel(firstname: "", lastname: "", email: "email@email.com")
         RegistrationForum(viewModel: vm)
     }
 }

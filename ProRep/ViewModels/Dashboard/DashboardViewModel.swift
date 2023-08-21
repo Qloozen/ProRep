@@ -6,17 +6,20 @@
 //
 
 import Foundation
-import FirebaseFirestore
 
 @MainActor class DashboardViewModel: ObservableObject {
+    // MARK: PUBLIC
     @Published var userName = ""
-    @Published var schedule: [String: ExerciseGroupModel?]? = nil
-    @Published var selectedDay: ScheduleDay = Date().getScheduleday()
+    @Published var schedule: [ExerciseGroupModel] = []
+    @Published var selectedDay = Date().getDayOfWeek()
+    
+    public let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     
     public var selectedGroup: ExerciseGroupModel? {
         get {
-            guard let schedule else { return nil }
-            return schedule[selectedDay.rawValue, default: nil]
+            schedule.first { group in
+                group.planned_on_day == selectedDay
+            }
         }
     }
     
@@ -25,43 +28,44 @@ import FirebaseFirestore
             if selectedGroup == nil {
                 return "No exercises planned"
             }
-            else if Date().getScheduleday() == selectedDay {
+            else if Date().getDayOfWeek() == selectedDay {
                 return "Today's exercises"
             } else {
-                return selectedDay.rawValue.capitalized + " exercises"
+                return days[selectedDay - 1].capitalized + " exercises"
             }
         }
     }
-
+    
+    // MARK: PRIVATE
     private var userId = UserDefaults.standard.string(forKey: CurrentUserDefaults.user_id.rawValue)
+    
+    private func fetchUserData() async {
+        guard let userId = self.userId else { return }
+        
+        do {
+            let user = try await UserService.sharedInstance.getUserById(id: userId)
+            self.userName = user.first_name
+        }
+        catch {
+            print(String(describing: error))
+        }
+    }
+    
+    private func getSchedule() async {
+        do {
+            let schedule = try await ScheduleService.sharedInstance.getSchedule()
+            self.schedule = schedule
+            print(schedule)
+        } catch {
+            print(String(describing: error))
+        }
+    }
     
     // MARK: Init
     init() {
-        self.fetchUserData()
-    }
-        
-    public func fetchUserData() {
-        guard let userId = self.userId else { return }
-        
-        UserService.sharedInstance.getUserById(id: userId) {[weak self] result in
-            switch result {
-            case .success(let model):
-                self?.userName = model.name
-                self?.getSchedule(scheduleResult: model.schedule)
-            case .failure(let failure):
-                print(String(describing: failure))
-            }
-        }
-    }
-    
-    private func getSchedule(scheduleResult: [String: String?]) {
-        ScheduleService.sharedInstance.getSchedule(scheduleResult: scheduleResult) {[weak self] result in
-            switch result {
-            case .success(let model):
-                self?.schedule = model
-            case .failure(let failure):
-                print(String(describing: failure))
-            }
+        Task {
+            await self.fetchUserData()
+            await self.getSchedule()
         }
     }
 }

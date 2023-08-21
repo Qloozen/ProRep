@@ -14,12 +14,6 @@ enum HttpMethod: String {
 }
 
 final class APIRequest {
-    // MARK: PRIVATE
-    private let urlPath: String
-    private let httpMethod: HttpMethod
-    private let BASEURL = "https://prorep.qloozen.nl/"
-    private let body: String?
-    
     // MARK: PUBLIC
     public var request: URLRequest? {
         get async throws {
@@ -33,7 +27,7 @@ final class APIRequest {
             urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
             
             if let body {
-                urlRequest.httpBody = body.data(using: .utf8)
+                urlRequest.httpBody = body
             }
             
             let token = try await Auth.auth().currentUser?.getIDToken()
@@ -45,8 +39,14 @@ final class APIRequest {
         }
     }
     
+    // MARK: PRIVATE
+    private let urlPath: String
+    private let httpMethod: HttpMethod
+    private let BASEURL = "https://prorep.qloozen.nl/"
+    private let body: Data?
+    
     // MARK: INIT
-    init(urlPath: String, httpMethod: HttpMethod = .GET, body: String?) {
+    init(urlPath: String, httpMethod: HttpMethod = .GET, body: Data? = nil) {
         self.urlPath = urlPath
         self.httpMethod = httpMethod
         self.body = body

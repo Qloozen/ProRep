@@ -46,7 +46,7 @@ struct RegistrationView: View {
             
             StyledButton(title: "Register", isLoading: viewModel.isLoading, disabled: !viewModel.isValid) {
                 print("Register Button")
-                viewModel.registerWithEmail()
+                Task { await viewModel.registerWithEmail()}
             }
             
             Spacer()
@@ -54,9 +54,9 @@ struct RegistrationView: View {
         }
         .fullScreenCover(isPresented: $viewModel.showRegistrationForm, content: {
             RegistrationForum(viewModel: RegistrationForumViewModel(
-                name: "",
-                email: viewModel.email,
-                provider_UID: viewModel.provider_UID)
+                firstname: "",
+                lastname: "",
+                email: viewModel.email)
             )
         })
         .padding(25)

@@ -42,8 +42,7 @@ struct LoginView: View {
             
             VStack(spacing: 15){
                 StyledButton(title: "Login", isLoading: viewModel.isLoading, disabled: !viewModel.isValid) {
-                    print("Login button")
-                    viewModel.signInWithEmail()
+                    Task {await viewModel.signInWithEmail()}
                 }
  
                 Text("OR")
@@ -102,9 +101,9 @@ struct LoginView: View {
         }
         .fullScreenCover(isPresented: $viewModel.showRegistrationForm, content: {
             RegistrationForum(viewModel: RegistrationForumViewModel(
-                name: viewModel.name,
-                email: viewModel.email,
-                provider_UID: viewModel.provider_UID)
+                firstname: viewModel.firstname,
+                lastname: viewModel.lastname,
+                email: viewModel.email)
             )
         })
         .padding(25)

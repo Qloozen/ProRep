@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct DayButton: View {
-    var day: ScheduleDay
-    @Binding var selectedDay: ScheduleDay
+    var dayName: String
+    var dayNumber: Int
+    @Binding var selectedDay: Int
     
     var body: some View {
         Button {
-            selectedDay = day
+            selectedDay = dayNumber
         } label: {
             VStack {
                 VStack {
-                    Text(day.rawValue.prefix(3))
+                    Text(dayName.prefix(3))
                         .font(.system(size: 15))
                         .foregroundColor(.white)
                         .fontWeight(.bold)
@@ -41,7 +42,7 @@ struct DayButton: View {
                 Color.gray
                     .frame(height: 3)
                     .cornerRadius(2)
-                    .opacity(selectedDay == day ? 1.0 : 0.0)
+                    .opacity(selectedDay == dayNumber ? 1.0 : 0.0)
                     .animation(.easeInOut, value: selectedDay)
             }
         }
@@ -50,7 +51,7 @@ struct DayButton: View {
 
 struct DayButton_Previews: PreviewProvider {
     static var previews: some View {
-        @State var selectedDay: ScheduleDay = .monday
-        DayButton(day: .monday, selectedDay: $selectedDay)
+        @State var selectedDay = 1;
+        DayButton(dayName: "Monday", dayNumber: 1, selectedDay: $selectedDay)
     }
 }

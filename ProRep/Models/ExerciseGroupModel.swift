@@ -6,16 +6,18 @@
 //
 
 import Foundation
-import FirebaseFirestoreSwift
 
 struct ExerciseGroupModel: Codable {
-    @DocumentID var id: String?
+    var id: Int
     var name: String
     var description: String
+    var planned_on_day: Int?
     var exercises: [ExerciseModel]?
-    var exercise_ids: [String]
-    
-    private enum CodingKeys: String, CodingKey {
-        case id, name, description, exercise_ids
-    }
+}
+
+struct CreateExerciseGroupModel: Codable {
+    var userId: String
+    var name: String
+    var description: String
+    var planned_on_day: Int?
 }

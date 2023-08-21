@@ -6,24 +6,26 @@
 //
 
 import Foundation
-import FirebaseFirestoreSwift
-import FirebaseFirestore
 
 struct UserModel: Codable {
-    @DocumentID var id: String?
-    @ServerTimestamp var date_created: Date?
-    var provider_UID: String
-    var name: String
-    var birthday: Date?
-    var current_weight: Double
-    var email: String
-    var height: Double
+    var first_name: String
+    var last_name: String
     var gender: Gender
-    var schedule: [String: String?]
+    var birthday: String
+    var current_weight_kg: Double
+    var height_cm: Double
+    var email: String
+    var date_created: String
+    var id: String
 }
 
-public enum ScheduleDay: String, Codable, CaseIterable {
-    case monday, tuesday, wednesday, thursday, friday, saturday, sunday
+struct CreateUserModel: Codable {
+    var first_name: String
+    var last_name: String
+    var gender: Gender
+    var birthday: Date
+    var current_weight_kg: Double
+    var height_cm: Double
 }
 
 public enum Gender: String, Codable, CaseIterable {

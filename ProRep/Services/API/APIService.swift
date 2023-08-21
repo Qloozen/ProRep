@@ -12,7 +12,7 @@ final class APIService {
         case failedToCreateRequest
     }
     
-    public static let shared = APIService()
+    public static let sharedInstance = APIService()
     
     private init() {}
 
@@ -23,9 +23,9 @@ final class APIService {
         guard let urlRequest = try await apiRequest.request else {
             throw APIError.failedToCreateRequest
         }
-
+        print(urlRequest.url ?? "")
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
-        
+            
         let decoded = try JSONDecoder().decode(type.self, from: data)
 
         return decoded

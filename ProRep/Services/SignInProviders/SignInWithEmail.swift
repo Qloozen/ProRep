@@ -9,46 +9,33 @@ import Foundation
 import FirebaseAuth
 
 class SignInWithEmail {
+    // MARK: PUBLIC
     public static let sharedInstance = SignInWithEmail()
     
-    private init() {}
-    
-    public func signIn(email: String, password: String, completionHandler: @escaping (_ user_id: String?) -> Void) {
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-            guard let authResult, error == nil else {
-                print("failed to login with email")
-                completionHandler(nil)
-                return
-            }
-            
-            AuthService.sharedInstance.checkIfUserExist(provider_UID: authResult.user.uid) { user_id in
-                guard let user_id else {
-                    completionHandler(nil)
-                    return
-                }
-                completionHandler(user_id)
-            }
+    public func signIn(email: String, password: String) async throws -> UserModel? {
+        let authResult = try await Auth.auth().signIn(withEmail: email, password: password)
+        
+        do {
+            let user = try await UserService.sharedInstance.getUserById(id: authResult.user.uid)
+            return user
+        } catch {
+            return nil
         }
     }
-
+    
     public func register(
         email: String,
-        password: String,
-        completionHandler: @escaping (_ isError: Bool, _ isNewUser: Bool?, _ provider_UID: String?, _ user_id: String?) -> Void
-    ) {
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            guard let authResult, error == nil else {
-                print(String(describing: error))
-                completionHandler(true, nil, nil, nil)
-                return
-            }
-            AuthService.sharedInstance.checkIfUserExist(provider_UID: authResult.user.uid) { user_id in
-                guard let user_id else {
-                    completionHandler(false, true, authResult.user.uid, user_id)
-                    return
-                }
-                completionHandler(false, false, authResult.user.uid, user_id)
-            }
+        password: String
+    ) async throws -> UserModel? {
+        let authResult = try await Auth.auth().createUser(withEmail: email, password: password)
+        
+        do {
+            return try await UserService.sharedInstance.getUserById(id: authResult.user.uid)
+        } catch {
+            return nil
         }
     }
+    
+    // MARK: INIT
+    private init() {}
 }

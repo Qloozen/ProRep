@@ -42,7 +42,7 @@ struct OutlinedExerciseCard: View {
 }
 
 struct OutlinedExerciseCard_Previews: PreviewProvider {
-    @State static var exercise: ExerciseModel = ExerciseModel(name: "test", description: "test")
+    @State static var exercise: ExerciseModel = ExerciseModel(id: 1, name: "test", description: "test")
 
     static var previews: some View {
         OutlinedExerciseCard(exercise: exercise)

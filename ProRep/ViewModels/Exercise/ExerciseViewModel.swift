@@ -8,35 +8,33 @@
 import Foundation
 
 @MainActor class ExerciseViewModel: ObservableObject {
+    // MARK: PUBLIC
     @Published var exercises: [ExerciseModel] = []
     @Published var groups: [ExerciseGroupModel] = []
     
-    init() {
-        self.fetchGroups()
-        self.fetchExercises()
-    }
-    
-    public func fetchGroups() {
-        GroupService.sharedInstance.getAllGroups {[weak self] result in
-            switch result {
-            case .success(let groups):
-                self?.groups = groups
-            case .failure(let failure):
-                print(String(describing: failure))
-                return
-            }
+    public func fetchGroups() async {
+        do {
+            let groups = try await ExerciseGroupService.sharedInstance.getAllExerciseGroups()
+            self.groups = groups
+        } catch {
+            print(String(describing: error))
         }
     }
     
-    public func fetchExercises() {
-        ExerciseService.sharedInstance.getAllExercises {[weak self] result in
-            switch result {
-            case .success(let exercises):
-                self?.exercises = exercises
-            case .failure(let failure):
-                print(String(describing: failure))
-                return
-            }
+    public func fetchExercises() async {
+        do {
+            let exercises = try await ExerciseService.sharedInstance.getAllExercises()
+            self.exercises = exercises
+        } catch {
+            print(String(describing: error))
+        }
+    }
+    
+    // MARK: INIT
+    init() {
+        Task {
+            await self.fetchGroups()
+            await self.fetchExercises()
         }
     }
 }

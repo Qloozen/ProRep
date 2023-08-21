@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct ExerciseForumView: View {
+struct ExerciseFormView: View {
     @Environment(\.dismiss) var dismiss
     
-    @StateObject var viewModel = ExerciseForumViewModel()
+    @StateObject var viewModel: ExerciseFormViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -39,8 +39,8 @@ struct ExerciseForumView: View {
             Spacer()
             
             StyledButton(title: "Create exercise", isLoading: viewModel.isLoading, disabled: !viewModel.isValid) {
+                Task { await viewModel.createExercise()}
                 dismiss()
-                viewModel.createExercise()
             }
         }.padding(20)
     }
@@ -48,6 +48,6 @@ struct ExerciseForumView: View {
 
 struct ExerciseForumView_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseForumView()
+        ExerciseFormView(viewModel: ExerciseFormViewModel(fetchExercises: {}))
     }
 }

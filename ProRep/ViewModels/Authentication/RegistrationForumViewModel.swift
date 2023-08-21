@@ -9,21 +9,27 @@ import Foundation
 import FirebaseFirestore
 
 @MainActor class RegistrationForumViewModel: ObservableObject {
-    // MARK: Properties
-    @Published var name: String
+    // MARK: PUBLIC
+    @Published var firstname: String
+    @Published var lastname: String
     @Published var birthday: Date = .now
     @Published var gender: Gender = .male
     @Published var height: Double?
     @Published var weight: Double?
 
     @Published var isLoading: Bool = false
+        
+    public var firstnamePrompt: String? {
+        guard firstname.count > 0, firstname.count <= 20 else {
+            return "Firstname length must be between 1 and 20"
+        }
+        
+        return nil
+    }
     
-    private var email: String
-    private var provider_UID: String
-    
-    public var namePrompt: String? {
-        guard name.count > 0, name.count <= 20 else {
-            return "Name length must be between 1 and 20"
+    public var lastnamePrompt: String? {
+        guard lastname.count > 0, lastname.count <= 20 else {
+            return "Lastname length must be between 1 and 20"
         }
         
         return nil
@@ -44,43 +50,36 @@ import FirebaseFirestore
     }
     
     public var isValid: Bool {
-        namePrompt == nil && weightPrompt == nil && heightPrompt == nil
+        firstnamePrompt == nil && lastnamePrompt == nil && weightPrompt == nil && heightPrompt == nil
     }
     
-    // MARK: Init
-    init(name: String, email: String, provider_UID: String) {
-        self.name = name
-        self.email = email
-        self.provider_UID = provider_UID
-    }
-    
-    // MARK: Functions
-    public func createAccount() {
+    public func createAccount() async {
         guard let weight, let height else {
             return
         }
         self.isLoading = true
         
-        let schedule: [String: String?] = [
-            ScheduleDay.monday.rawValue: nil,
-            ScheduleDay.tuesday.rawValue: nil,
-            ScheduleDay.wednesday.rawValue: nil,
-            ScheduleDay.thursday.rawValue: nil,
-            ScheduleDay.friday.rawValue: nil,
-            ScheduleDay.saturday.rawValue: nil,
-            ScheduleDay.sunday.rawValue: nil
-        ]
+        let user = CreateUserModel(first_name: firstname, last_name: lastname, gender: gender, birthday: birthday, current_weight_kg: weight, height_cm: height)
         
-        let user = UserModel(provider_UID: provider_UID, name: name, birthday: birthday, current_weight: weight, email: email, height: height, gender: gender, schedule: schedule)
-        UserService.sharedInstance.createUser(user: user) { [weak self] result in
-            switch result {
-            case .success(let user_id):
-                AuthService.sharedInstance.storeUserdata(user_id: user_id)
-                self?.isLoading = false
-            case .failure(let failure):
-                print(String(describing: failure))
-                self?.isLoading = false
-            }
+        do {
+            let user = try await UserService.sharedInstance.createUser(user: user)
+            self.isLoading = false
+            AuthService.sharedInstance.storeUserdata(id: user.id, name: user.first_name)
+        } catch {
+            self.isLoading = false
+            print(String(describing: error))
+            // handle error
+            
         }
+    }
+    
+    // MARK: PRIVATE
+    private var email: String
+
+    // MARK: INIT
+    init(firstname: String, lastname: String, email: String) {
+        self.firstname = firstname
+        self.lastname = lastname
+        self.email = email
     }
 }

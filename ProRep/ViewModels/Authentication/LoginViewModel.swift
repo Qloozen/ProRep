@@ -10,11 +10,13 @@ import FirebaseAuth
 import FirebaseFirestore
 
 @MainActor class LoginViewModel: ObservableObject {
+    // MARK: PUBLIC
     @Published var isLoading: Bool = false
     @Published var showError: Bool = false
     @Published var showRegistrationForm: Bool = false
     
-    @Published var name: String = ""
+    @Published var firstname: String = ""
+    @Published var lastname: String = ""
     @Published var email: String = "" // email from providers
     @Published var provider_UID: String = ""
     
@@ -31,43 +33,41 @@ import FirebaseFirestore
     // MARK: Public functions
     public func signInWithGoogle() async {
         do {
-            let (credential, name, email) = try await SignInWithGoogle.sharedInstance.signIn()
+            let (credential, firstname, lastname, email) = try await SignInWithGoogle.sharedInstance.signIn()
             self.email = email
-            self.name = name
-            self.signInToFirebase(credential: credential)
+            self.firstname = firstname
+            self.lastname = lastname
+            await self.signInToFirebase(credential: credential)
         } catch {
             self.showError.toggle()
             return
         }
     }
     
-    public func signInWithEmail() {
+    public func signInWithEmail() async {
         self.isLoading = true
-        SignInWithEmail.sharedInstance.signIn(email: loginEmail, password: loginPassword) { user_id in
-            guard let user_id else {
-                self.isLoading = false
-                return
+        do {
+            if let user = try await SignInWithEmail.sharedInstance.signIn(email: loginEmail, password: loginPassword) {
+                AuthService.sharedInstance.storeUserdata(id: user.id, name: user.first_name)
             }
-            AuthService.sharedInstance.storeUserdata(user_id: user_id)
+            self.isLoading = false
+        } catch {
+            self.showError.toggle()
             self.isLoading = false
         }
     }
     
-    // MARK: Private
-    private func signInToFirebase(credential: AuthCredential) {
-        AuthService.sharedInstance.signInToFirebase(credential: credential) { [weak self] isError, isNewUser, provider_UID, user_id in
-            guard !isError, let isNewUser, let provider_UID else {
-                self?.showError.toggle()
-                return
-            }
-            
-            self?.provider_UID = provider_UID
-            
-            if let user_id, !isNewUser {
-                AuthService.sharedInstance.storeUserdata(user_id: user_id)
+    // MARK: PRIVATE
+    private func signInToFirebase(credential: AuthCredential) async {
+        do {
+            if let user = try await AuthService.sharedInstance.signInToFirebase(credential: credential) {
+                AuthService.sharedInstance.storeUserdata(id: user.id, name: user.first_name)
             } else {
-                self?.showRegistrationForm.toggle()
+                self.showRegistrationForm.toggle()
             }
+        } catch {
+            self.showError.toggle()
         }
+        
     }
 }

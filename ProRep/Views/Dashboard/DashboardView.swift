@@ -15,19 +15,25 @@ struct DashboardView: View {
             ScrollViewReader { val in
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(ScheduleDay.allCases, id: \.self) { day in
-                            DayButton(day: day, selectedDay: $viewmodel.selectedDay)
-                                .id(day)
+                        ForEach(viewmodel.days, id: \.self) { day in
+                            
+                            DayButton(
+                                dayName: day,
+                                dayNumber: (viewmodel.days.firstIndex(of: day) ?? 0) + 1,
+                                selectedDay: $viewmodel.selectedDay
+                            )
+                            .id(viewmodel.days.firstIndex(of: day) ?? 0 + 1)
                         }
                     }
                 }.onAppear() {
-                    val.scrollTo(Date().getScheduleday(), anchor: .center)
+                    val.scrollTo(Date().getDayOfWeek(), anchor: .center)
                 }
             }
             Text(viewmodel.displayHeader)
                 .font(.headline)
+            
             if let group = viewmodel.selectedGroup {
-                ForEach(viewmodel.selectedGroup?.exercises ?? [], id: \.id) { exercise in
+                ForEach(group.exercises ?? [], id: \.id) { exercise in
                     OutlinedExerciseCard(exercise: exercise)
                 }
             }

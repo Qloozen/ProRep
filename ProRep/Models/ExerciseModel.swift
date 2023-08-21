@@ -6,10 +6,15 @@
 //
 
 import Foundation
-import FirebaseFirestoreSwift
 
 struct ExerciseModel: Codable {
-    @DocumentID var id: String?
+    var id: Int
+    var name: String
+    var description: String
+}
+
+struct CreateExerciseModel: Codable {
+    var userId: String
     var name: String
     var description: String
 }

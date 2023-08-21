@@ -11,12 +11,10 @@ import FirebaseAuth
 import GoogleSignIn
 
 final class SignInWithGoogle {
+    // MARK: PUBLIC
     public static let sharedInstance = SignInWithGoogle()
-    
-    private init() {}
-    
-    // MARK: Public
-    public func signIn() async throws -> (credential: AuthCredential, name: String, email: String){
+
+    public func signIn() async throws -> (credential: AuthCredential, firstname: String, lastname: String, email: String){
         guard let clientID = FirebaseApp.app()?.options.clientID else {
             throw AuthError.googleSignInError
         }
@@ -32,7 +30,8 @@ final class SignInWithGoogle {
         
         guard
             let idToken = result.user.idToken?.tokenString,
-            let userName = result.user.profile?.name,
+            let firstname = result.user.profile?.givenName,
+            let lastname = result.user.profile?.familyName,
             let email = result.user.profile?.email
         else {
             throw AuthError.googleSignInError
@@ -40,10 +39,10 @@ final class SignInWithGoogle {
         
         let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
         
-        return (credential, userName, email)
+        return (credential, firstname, lastname, email)
     }
     
-    // MARK: Private
+    // MARK: PRIVATE
     private func getRootViewController() async -> UIViewController {
         await MainActor.run {
             guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return .init()}
@@ -52,4 +51,7 @@ final class SignInWithGoogle {
             return rootViewController
         }
     }
+    
+    // MARK: INIT
+    private init() {}
 }
