@@ -9,14 +9,14 @@ import SwiftUI
 
 struct DashboardView: View {
     @StateObject private var viewmodel = DashboardViewModel()
-        
+    @AppStorage(CurrentUserDefaults.user_image.rawValue) var user_image: URL?
+
     var body: some View {
         VStack (alignment: .leading, spacing: 20) {
             ScrollViewReader { val in
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(viewmodel.days, id: \.self) { day in
-                            
                             DayButton(
                                 dayName: day,
                                 dayNumber: (viewmodel.days.firstIndex(of: day) ?? 0) + 1,
@@ -41,7 +41,37 @@ struct DashboardView: View {
             Spacer()
         }
         .padding(20)
-        .navigationTitle("Dashboard")
+        .toolbar {
+            ToolbarItem (placement: .principal)  {
+                HStack (alignment: .center) {
+                    Text("Dashboard")
+                        .font(.largeTitle)
+                        .bold()
+                    Spacer()
+                    NavigationLink {
+                        Text("Profile")
+                    } label: {
+                        if let user_image {
+                            AsyncImage(url: user_image) { image in
+                                image
+                                    .resizable()
+                                    .scaledToFit()
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            .frame(width: 44, height: 44)
+                            .clipShape(Circle())
+                        } else {
+                            Image(systemName: "person.circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 44, height: 44)
+                        }
+                    }
+                }
+                .padding(.horizontal, 20)
+            }
+        }
     }
 }
 

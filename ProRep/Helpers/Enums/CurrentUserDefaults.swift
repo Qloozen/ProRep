@@ -8,5 +8,5 @@
 import Foundation
 
 enum CurrentUserDefaults: String {
-    case user_id, name
+    case user_id, name, user_image
 }

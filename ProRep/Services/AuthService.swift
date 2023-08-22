@@ -20,6 +20,7 @@ final class AuthService {
         
         do {
             let user = try await UserService.sharedInstance.getUserById(id: userUID)
+            UserDefaults.standard.set(authResult.user.photoURL, forKey: CurrentUserDefaults.user_image.rawValue)
             return user
         } catch {
             return nil

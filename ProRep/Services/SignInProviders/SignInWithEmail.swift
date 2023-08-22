@@ -17,6 +17,7 @@ class SignInWithEmail {
         
         do {
             let user = try await UserService.sharedInstance.getUserById(id: authResult.user.uid)
+            UserDefaults.standard.set(authResult.user.photoURL, forKey: CurrentUserDefaults.user_image.rawValue)
             return user
         } catch {
             return nil
