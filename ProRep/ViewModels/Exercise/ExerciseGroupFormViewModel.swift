@@ -21,7 +21,7 @@ import SwiftUI
         
     public func createGroup() async {
         do {
-            let _ = try await ExerciseGroupService.sharedInstance.createExerciseGroup(exerciseGroup: CreateExerciseGroupModel(userId: userId, name: nameInput, description: descriptionInput, planned_on_day: nil))
+            let _ = try await ExerciseGroupService.sharedInstance.createExerciseGroup(exerciseGroup: CreateExerciseGroupModel(name: nameInput, description: descriptionInput, planned_on_day: nil))
             await self.fetchGroups()
         } catch {
             print(String(describing: error))

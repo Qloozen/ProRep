@@ -23,7 +23,7 @@ import SwiftUI
         self.isLoading = true
         
         do {
-            let _ = try await ExerciseService.sharedInstance.createExercise(exercise: CreateExerciseModel(userId: userId, name: nameInput, description: descriptionInput))
+            let _ = try await ExerciseService.sharedInstance.createExercise(exercise: CreateExerciseModel(name: nameInput, description: descriptionInput))
             await fetchExercises()
         } catch {
             // Handle error
