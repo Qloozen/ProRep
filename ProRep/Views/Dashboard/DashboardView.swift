@@ -17,16 +17,17 @@ struct DashboardView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(viewmodel.days, id: \.self) { day in
+        
                             DayButton(
                                 dayName: day,
                                 dayNumber: (viewmodel.days.firstIndex(of: day) ?? 0) + 1,
                                 selectedDay: $viewmodel.selectedDay
                             )
-                            .id(viewmodel.days.firstIndex(of: day) ?? 0 + 1)
+                            .id((viewmodel.days.firstIndex(of: day) ?? 0) + 1)
                         }
                     }
                 }.onAppear() {
-                    val.scrollTo(Date().getDayOfWeek(), anchor: .center)
+                    val.scrollTo(Date().getDayOfWeek())
                 }
             }
             Text(viewmodel.displayHeader)

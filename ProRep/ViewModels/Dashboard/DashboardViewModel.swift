@@ -55,7 +55,6 @@ import Foundation
         do {
             let schedule = try await ScheduleService.sharedInstance.getSchedule()
             self.schedule = schedule
-            print(schedule)
         } catch {
             print(String(describing: error))
         }
