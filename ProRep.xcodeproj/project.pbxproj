@@ -56,6 +56,7 @@
 		BFBAB2F629F42B940077F233 /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAB2F529F42B940077F233 /* ExerciseView.swift */; };
 		BFBAB2F929F43ADE0077F233 /* ExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAB2F829F43ADE0077F233 /* ExerciseViewModel.swift */; };
 		BFBAB2FB29F43C550077F233 /* ExerciseGroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAB2FA29F43C550077F233 /* ExerciseGroupService.swift */; };
+		BFD9E3AB2A9B55F20008772D /* ExerciseListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9E3AA2A9B55F20008772D /* ExerciseListButton.swift */; };
 		BFEA095A29EC420A0075C4CB /* ScheduleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA095929EC420A0075C4CB /* ScheduleService.swift */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,7 @@
 		BFBAB2F529F42B940077F233 /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
 		BFBAB2F829F43ADE0077F233 /* ExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModel.swift; sourceTree = "<group>"; };
 		BFBAB2FA29F43C550077F233 /* ExerciseGroupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGroupService.swift; sourceTree = "<group>"; };
+		BFD9E3AA2A9B55F20008772D /* ExerciseListButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListButton.swift; sourceTree = "<group>"; };
 		BFEA095929EC420A0075C4CB /* ScheduleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -303,6 +305,7 @@
 				BF9F842329E2E8DE00B337D0 /* UnderlineTextField.swift */,
 				BF9F842529E2F14A00B337D0 /* StyledButton.swift */,
 				BF9EC18629E328D2004CE411 /* PasswordField.swift */,
+				BFD9E3AA2A9B55F20008772D /* ExerciseListButton.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				BF9F840529E2C30F00B337D0 /* ProRepApp.swift in Sources */,
 				BFBAB2F629F42B940077F233 /* ExerciseView.swift in Sources */,
 				BF31097929E3F9AC004C673D /* UserModel.swift in Sources */,
+				BFD9E3AB2A9B55F20008772D /* ExerciseListButton.swift in Sources */,
 				BF2DFC3B29E4AF3A00E58DE7 /* RegistrationForumViewModel.swift in Sources */,
 				BF89E4CD29E9839500B77FD0 /* DayButton.swift in Sources */,
 				BF9F842829E2F4E500B337D0 /* ColorExtensions.swift in Sources */,
