@@ -34,6 +34,8 @@ struct DashboardView: View {
                 .font(.headline)
             
             if let group = viewmodel.selectedGroup {
+                Text(group.name)
+
                 ForEach(group.exercises ?? [], id: \.id) { exercise in
                     OutlinedExerciseCard(exercise: exercise)
                 }
