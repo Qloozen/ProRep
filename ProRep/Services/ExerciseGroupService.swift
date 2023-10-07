@@ -24,6 +24,22 @@ final class ExerciseGroupService {
         return response.data
     }
     
+    public func addExerciseToGroup(groupId: Int, exerciseId: Int) async throws -> ExerciseGroupModel {
+        let data = try JSONEncoder().encode(["groupId": groupId, "exerciseId": exerciseId])
+        let request = APIRequest(urlPath: "exercise-groups/add-exercise", httpMethod: .POST, body: data)
+        let response = try await APIService.sharedInstance.execute(apiRequest: request, expecting: ResponseModel<ExerciseGroupModel>.self)
+        return response.data
+        
+    }
+    
+    public func removeExerciseFromGroup(groupId: Int, exerciseId: Int) async throws -> ExerciseGroupModel{
+        let data = try JSONEncoder().encode(["groupId": groupId, "exerciseId": exerciseId])
+        let request = APIRequest(urlPath: "exercise-groups/remove-exercise", httpMethod: .POST, body: data)
+        let response = try await APIService.sharedInstance.execute(apiRequest: request, expecting: ResponseModel<ExerciseGroupModel>.self)
+        return response.data
+        
+    }
+    
     // MARK: PRIVATE
     private var userId: String = ""
     

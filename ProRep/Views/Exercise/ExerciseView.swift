@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExerciseView: View {
-    @StateObject var viewModel = ExerciseViewModel()
+    @EnvironmentObject var viewModel: ExerciseViewModel
     @State var showExerciseForum = false
     @State var showExerciseGroupForum = false
 
@@ -32,8 +32,8 @@ struct ExerciseView: View {
                 
                 LazyVGrid(columns: gridItems, spacing: 20) {
                     ForEach(viewModel.groups, id: \.id) { group in
-                        Button(group.name) {
-                            
+                        NavigationLink (group.name){
+                            ExerciseGroupDetailsView(exerciseGroup: group)
                         }
                         .padding(30)
                         .frame(maxWidth: .infinity)
@@ -42,6 +42,7 @@ struct ExerciseView: View {
                         .foregroundColor(.primary)
                         .background(Color.themedGreen)
                         .cornerRadius(15)
+
                     }
                 }
                 

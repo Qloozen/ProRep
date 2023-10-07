@@ -12,7 +12,7 @@ struct ExerciseGroupModel: Codable {
     var name: String
     var description: String
     var planned_on_day: Int?
-    var exercises: [ExerciseModel]?
+    var exercises: [ExerciseModel]
 }
 
 struct CreateExerciseGroupModel: Codable {

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @AppStorage(CurrentUserDefaults.name.rawValue) var user: String?
+    @StateObject private var exerciseViewModel = ExerciseViewModel()
     
     var body: some View {
         if user != nil {
@@ -42,6 +43,7 @@ struct ContentView: View {
                         Text("Settings")
                     }
             }
+            .environmentObject(exerciseViewModel)
         } else {
             NavigationStack {
                 LoginView()

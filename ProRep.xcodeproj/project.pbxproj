@@ -50,6 +50,7 @@
 		BF9F842429E2E8DE00B337D0 /* UnderlineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F842329E2E8DE00B337D0 /* UnderlineTextField.swift */; };
 		BF9F842629E2F14A00B337D0 /* StyledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F842529E2F14A00B337D0 /* StyledButton.swift */; };
 		BF9F842829E2F4E500B337D0 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F842729E2F4E500B337D0 /* ColorExtensions.swift */; };
+		BFA4F6DF2ACF2C700003F8A1 /* ExerciseGroupDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4F6DE2ACF2C700003F8A1 /* ExerciseGroupDetailsViewModel.swift */; };
 		BFBAB2EE29F3C80A0077F233 /* OutlinedExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAB2ED29F3C80A0077F233 /* OutlinedExerciseCard.swift */; };
 		BFBAB2F029F3C8270077F233 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAB2EF29F3C8270077F233 /* ExerciseModel.swift */; };
 		BFBAB2F229F3E9CF0077F233 /* ExerciseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAB2F129F3E9CF0077F233 /* ExerciseService.swift */; };
@@ -57,6 +58,7 @@
 		BFBAB2F929F43ADE0077F233 /* ExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAB2F829F43ADE0077F233 /* ExerciseViewModel.swift */; };
 		BFBAB2FB29F43C550077F233 /* ExerciseGroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAB2FA29F43C550077F233 /* ExerciseGroupService.swift */; };
 		BFD9E3AB2A9B55F20008772D /* ExerciseListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9E3AA2A9B55F20008772D /* ExerciseListButton.swift */; };
+		BFD9E3AE2A9B57A10008772D /* ExerciseGroupDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9E3AD2A9B57A10008772D /* ExerciseGroupDetailsView.swift */; };
 		BFEA095A29EC420A0075C4CB /* ScheduleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA095929EC420A0075C4CB /* ScheduleService.swift */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +100,7 @@
 		BF9F842329E2E8DE00B337D0 /* UnderlineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineTextField.swift; sourceTree = "<group>"; };
 		BF9F842529E2F14A00B337D0 /* StyledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledButton.swift; sourceTree = "<group>"; };
 		BF9F842729E2F4E500B337D0 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		BFA4F6DE2ACF2C700003F8A1 /* ExerciseGroupDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGroupDetailsViewModel.swift; sourceTree = "<group>"; };
 		BFBAB2ED29F3C80A0077F233 /* OutlinedExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlinedExerciseCard.swift; sourceTree = "<group>"; };
 		BFBAB2EF29F3C8270077F233 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
 		BFBAB2F129F3E9CF0077F233 /* ExerciseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseService.swift; sourceTree = "<group>"; };
@@ -105,6 +108,7 @@
 		BFBAB2F829F43ADE0077F233 /* ExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModel.swift; sourceTree = "<group>"; };
 		BFBAB2FA29F43C550077F233 /* ExerciseGroupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGroupService.swift; sourceTree = "<group>"; };
 		BFD9E3AA2A9B55F20008772D /* ExerciseListButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListButton.swift; sourceTree = "<group>"; };
+		BFD9E3AD2A9B57A10008772D /* ExerciseGroupDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGroupDetailsView.swift; sourceTree = "<group>"; };
 		BFEA095929EC420A0075C4CB /* ScheduleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -228,6 +232,7 @@
 		BF9F841229E2D28300B337D0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BFD9E3AC2A9B57760008772D /* ExerciseGroupDetails */,
 				BFBAB2F329F42B6E0077F233 /* Exercise */,
 				BF89E4C929E9743B00B77FD0 /* Dashboard */,
 				BF9F842029E2E8A600B337D0 /* Shared */,
@@ -239,6 +244,7 @@
 		BF9F841329E2D29900B337D0 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				BFA4F6DD2ACF2C470003F8A1 /* ExerciseGroupDetails */,
 				BFBAB2F729F43ACD0077F233 /* Exercise */,
 				BF93525B29EBF30700B54FE5 /* Dashboard */,
 				BF93525A29EBF2F600B54FE5 /* Authentication */,
@@ -310,6 +316,14 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		BFA4F6DD2ACF2C470003F8A1 /* ExerciseGroupDetails */ = {
+			isa = PBXGroup;
+			children = (
+				BFA4F6DE2ACF2C700003F8A1 /* ExerciseGroupDetailsViewModel.swift */,
+			);
+			path = ExerciseGroupDetails;
+			sourceTree = "<group>";
+		};
 		BFBAB2F329F42B6E0077F233 /* Exercise */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +342,14 @@
 				BF476C2329F484AA00D6C4DC /* ExerciseGroupFormViewModel.swift */,
 			);
 			path = Exercise;
+			sourceTree = "<group>";
+		};
+		BFD9E3AC2A9B57760008772D /* ExerciseGroupDetails */ = {
+			isa = PBXGroup;
+			children = (
+				BFD9E3AD2A9B57A10008772D /* ExerciseGroupDetailsView.swift */,
+			);
+			path = ExerciseGroupDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,9 +442,11 @@
 				BF9F842629E2F14A00B337D0 /* StyledButton.swift in Sources */,
 				BF476C2229F4849900D6C4DC /* ExerciseGroupForumView.swift in Sources */,
 				BFBAB2F229F3E9CF0077F233 /* ExerciseService.swift in Sources */,
+				BFA4F6DF2ACF2C700003F8A1 /* ExerciseGroupDetailsViewModel.swift in Sources */,
 				BF2DFC3E29E54BDE00E58DE7 /* Validate.swift in Sources */,
 				BF23A1EF2A351A2200C703C9 /* APIRequest.swift in Sources */,
 				BF9F842429E2E8DE00B337D0 /* UnderlineTextField.swift in Sources */,
+				BFD9E3AE2A9B57A10008772D /* ExerciseGroupDetailsView.swift in Sources */,
 				BFEA095A29EC420A0075C4CB /* ScheduleService.swift in Sources */,
 				BF476C2429F484AA00D6C4DC /* ExerciseGroupFormViewModel.swift in Sources */,
 				BF9F841929E2E13C00B337D0 /* LoginView.swift in Sources */,
