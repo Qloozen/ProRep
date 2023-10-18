@@ -10,6 +10,7 @@ import SwiftUI
 struct DashboardView: View {
     @StateObject private var viewmodel = DashboardViewModel()
     @AppStorage(CurrentUserDefaults.user_image.rawValue) var user_image: URL?
+    @State var showExerciseGroupForum = false
 
     var body: some View {
         VStack (alignment: .leading, spacing: 20) {
@@ -36,9 +37,24 @@ struct DashboardView: View {
             if let group = viewmodel.selectedGroup {
                 Text(group.name)
 
-                ForEach(group.exercises ?? [], id: \.id) { exercise in
+                ForEach(group.exercises , id: \.id) { exercise in
                     OutlinedExerciseCard(exercise: exercise)
                 }
+            } else {
+                VStack(spacing: 20) {
+                    StyledButton(title: "Assign group") {
+                        showExerciseGroupForum.toggle()
+                    }
+                    
+                    StyledButton(title: "New group") {
+                        print("New Group")
+                    }
+                    .fullScreenCover(isPresented: $showExerciseGroupForum) {
+                        ExerciseGroupFormView(viewModel: ExerciseGroupFormViewModel(planned_on_day: viewmodel.selectedDay)).task {
+                            await viewmodel.getSchedule()
+                        }
+                    }
+                }.padding(.horizontal, 20)
             }
             
             Spacer()

@@ -51,7 +51,7 @@ import Foundation
         }
     }
     
-    private func getSchedule() async {
+    public func getSchedule() async {
         do {
             let schedule = try await ScheduleService.sharedInstance.getSchedule()
             self.schedule = schedule

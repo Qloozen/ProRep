@@ -26,7 +26,7 @@ struct ExerciseView: View {
                         showExerciseGroupForum.toggle()
                     }
                     .fullScreenCover(isPresented: $showExerciseGroupForum) {
-                        ExerciseGroupFormView(viewModel: ExerciseGroupFormViewModel(fetchGroups: viewModel.fetchGroups))
+                        ExerciseGroupFormView(viewModel: ExerciseGroupFormViewModel())
                     }
                 }
                 

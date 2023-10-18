@@ -21,19 +21,18 @@ import SwiftUI
         
     public func createGroup() async {
         do {
-            let _ = try await ExerciseGroupService.sharedInstance.createExerciseGroup(exerciseGroup: CreateExerciseGroupModel(name: nameInput, description: descriptionInput, planned_on_day: nil))
-            await self.fetchGroups()
+            let _ = try await ExerciseGroupService.sharedInstance.createExerciseGroup(exerciseGroup: CreateExerciseGroupModel(name: nameInput, description: descriptionInput, planned_on_day: plannedOnDay))
         } catch {
             print(String(describing: error))
         }
     }
     
     // MARK: PRIVATE
-    private var fetchGroups: () async -> Void
+    private var plannedOnDay: Int?
     private let userId = UserDefaults.standard.string(forKey: CurrentUserDefaults.user_id.rawValue) ?? ""
 
     // MARK: INIT
-    public init(fetchGroups: @escaping () async -> Void) {
-        self.fetchGroups = fetchGroups
+    public init(planned_on_day: Int? = nil) {
+        self.plannedOnDay = planned_on_day
     }
 }
