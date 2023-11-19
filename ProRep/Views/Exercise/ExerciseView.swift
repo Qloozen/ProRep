@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExerciseView: View {
-    @EnvironmentObject var viewModel: ExerciseViewModel
+    @EnvironmentObject var globalViewModel: GlobalViewModel
     @State var showExerciseForum = false
     @State var showExerciseGroupForum = false
 
@@ -31,7 +31,7 @@ struct ExerciseView: View {
                 }
                 
                 LazyVGrid(columns: gridItems, spacing: 20) {
-                    ForEach(viewModel.groups, id: \.id) { group in
+                    ForEach(globalViewModel.groups, id: \.id) { group in
                         NavigationLink (group.name){
                             ExerciseGroupDetailsView(exerciseGroup: group)
                         }
@@ -57,14 +57,14 @@ struct ExerciseView: View {
                     .fullScreenCover(isPresented: $showExerciseForum) {
                         ExerciseFormView(
                             viewModel: ExerciseFormViewModel(
-                                fetchExercises: viewModel.fetchExercises
+                                fetchExercises: globalViewModel.fetchExercises
                             )
                         )
                     }
                 }
                 
                 LazyVStack {
-                    ForEach(viewModel.exercises, id: \.id) { exercise in
+                    ForEach(globalViewModel.exercises, id: \.id) { exercise in
                         ExerciseListButton(exercise: exercise)
                     }
                 }

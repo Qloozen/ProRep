@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @AppStorage(CurrentUserDefaults.name.rawValue) var user: String?
-    @StateObject private var exerciseViewModel = ExerciseViewModel()
+    @StateObject private var globalViewModel = GlobalViewModel()
     
     var body: some View {
         if user != nil {
@@ -43,7 +43,7 @@ struct ContentView: View {
                         Text("Settings")
                     }
             }
-            .environmentObject(exerciseViewModel)
+            .environmentObject(globalViewModel)
         } else {
             NavigationStack {
                 LoginView()

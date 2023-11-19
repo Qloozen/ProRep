@@ -55,8 +55,8 @@
 		BFBAB2F029F3C8270077F233 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAB2EF29F3C8270077F233 /* ExerciseModel.swift */; };
 		BFBAB2F229F3E9CF0077F233 /* ExerciseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAB2F129F3E9CF0077F233 /* ExerciseService.swift */; };
 		BFBAB2F629F42B940077F233 /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAB2F529F42B940077F233 /* ExerciseView.swift */; };
-		BFBAB2F929F43ADE0077F233 /* ExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAB2F829F43ADE0077F233 /* ExerciseViewModel.swift */; };
 		BFBAB2FB29F43C550077F233 /* ExerciseGroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAB2FA29F43C550077F233 /* ExerciseGroupService.swift */; };
+		BFBBB2222B0A10AF00890DE9 /* GlobalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBBB2212B0A10AF00890DE9 /* GlobalViewModel.swift */; };
 		BFD9E3AB2A9B55F20008772D /* ExerciseListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9E3AA2A9B55F20008772D /* ExerciseListButton.swift */; };
 		BFD9E3AE2A9B57A10008772D /* ExerciseGroupDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9E3AD2A9B57A10008772D /* ExerciseGroupDetailsView.swift */; };
 		BFEA095A29EC420A0075C4CB /* ScheduleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA095929EC420A0075C4CB /* ScheduleService.swift */; };
@@ -105,8 +105,8 @@
 		BFBAB2EF29F3C8270077F233 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
 		BFBAB2F129F3E9CF0077F233 /* ExerciseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseService.swift; sourceTree = "<group>"; };
 		BFBAB2F529F42B940077F233 /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
-		BFBAB2F829F43ADE0077F233 /* ExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModel.swift; sourceTree = "<group>"; };
 		BFBAB2FA29F43C550077F233 /* ExerciseGroupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGroupService.swift; sourceTree = "<group>"; };
+		BFBBB2212B0A10AF00890DE9 /* GlobalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalViewModel.swift; sourceTree = "<group>"; };
 		BFD9E3AA2A9B55F20008772D /* ExerciseListButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListButton.swift; sourceTree = "<group>"; };
 		BFD9E3AD2A9B57A10008772D /* ExerciseGroupDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGroupDetailsView.swift; sourceTree = "<group>"; };
 		BFEA095929EC420A0075C4CB /* ScheduleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleService.swift; sourceTree = "<group>"; };
@@ -248,6 +248,7 @@
 				BFBAB2F729F43ACD0077F233 /* Exercise */,
 				BF93525B29EBF30700B54FE5 /* Dashboard */,
 				BF93525A29EBF2F600B54FE5 /* Authentication */,
+				BFBBB2212B0A10AF00890DE9 /* GlobalViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -337,7 +338,6 @@
 		BFBAB2F729F43ACD0077F233 /* Exercise */ = {
 			isa = PBXGroup;
 			children = (
-				BFBAB2F829F43ADE0077F233 /* ExerciseViewModel.swift */,
 				BF476C1F29F45EEE00D6C4DC /* ExerciseFormViewModel.swift */,
 				BF476C2329F484AA00D6C4DC /* ExerciseGroupFormViewModel.swift */,
 			);
@@ -455,6 +455,7 @@
 				BF028AE329E4A419003B3338 /* SignInWithEmail.swift in Sources */,
 				BF9EC19F29E33821004CE411 /* SignInWithGoogle.swift in Sources */,
 				BF476C1E29F45CC200D6C4DC /* ExerciseFormView.swift in Sources */,
+				BFBBB2222B0A10AF00890DE9 /* GlobalViewModel.swift in Sources */,
 				BFBAB2FB29F43C550077F233 /* ExerciseGroupService.swift in Sources */,
 				BFBAB2EE29F3C80A0077F233 /* OutlinedExerciseCard.swift in Sources */,
 				BFBAB2F029F3C8270077F233 /* ExerciseModel.swift in Sources */,
@@ -465,7 +466,6 @@
 				BF9F840729E2C30F00B337D0 /* ContentView.swift in Sources */,
 				BF9EC18729E328D2004CE411 /* PasswordField.swift in Sources */,
 				BF93525D29EBF32800B54FE5 /* DashboardViewModel.swift in Sources */,
-				BFBAB2F929F43ADE0077F233 /* ExerciseViewModel.swift in Sources */,
 				BF476C2029F45EEE00D6C4DC /* ExerciseFormViewModel.swift in Sources */,
 				BF31097529E3652D004C673D /* LoginViewModel.swift in Sources */,
 				BF31097329E359FD004C673D /* CurrentUserDefaults.swift in Sources */,

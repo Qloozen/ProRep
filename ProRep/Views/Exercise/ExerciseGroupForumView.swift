@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExerciseGroupFormView: View {
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var exerciseViewModel: ExerciseViewModel
+    @EnvironmentObject var globalViewModel: GlobalViewModel
     @StateObject var viewModel: ExerciseGroupFormViewModel
     
     var body: some View {
@@ -42,7 +42,7 @@ struct ExerciseGroupFormView: View {
                 dismiss()
                 Task {
                     await viewModel.createGroup()
-                    await exerciseViewModel.fetchGroups()
+                    await globalViewModel.fetchGroups()
                 }
             }
         }.padding(20)

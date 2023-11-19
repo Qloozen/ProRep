@@ -12,7 +12,7 @@ struct ExerciseGroupDetailsView: View {
     public var exerciseGroup: ExerciseGroupModel
     @State private var showAvailableExercises: Bool = false
     @StateObject private var exerciseGroupDetailsViewModel = ExerciseGroupDetailsViewModel()
-    @EnvironmentObject var exerciseViewModel: ExerciseViewModel
+    @EnvironmentObject var globalViewModel: GlobalViewModel
     
     var body: some View {
         VStack (alignment: .leading, spacing: 10) {
@@ -43,11 +43,11 @@ struct ExerciseGroupDetailsView: View {
                             .font(.title)
                 
                         List {
-                            ForEach(exerciseViewModel.exercises, id: \.id) { exercise in
+                            ForEach(globalViewModel.exercises, id: \.id) { exercise in
                                 Button(action: {
                                     Task {
                                         await exerciseGroupDetailsViewModel.addExercise(groupId: exerciseGroup.id, exerciseId: exercise.id)
-                                        await exerciseViewModel.fetchGroups()
+                                        await globalViewModel.fetchGroups()
                                         showAvailableExercises.toggle()
                                     }
                                 }, label: {
@@ -103,7 +103,7 @@ struct ExerciseGroupDetailsView: View {
         
         Task {
             await exerciseGroupDetailsViewModel.removeExercise(groupId: exerciseGroup.id, exerciseId: exercise.id)
-            await exerciseViewModel.fetchGroups()
+            await globalViewModel.fetchGroups()
         }
         
     }
@@ -114,6 +114,6 @@ struct ExerciseGroupDetailsView_Previews: PreviewProvider {
         ExerciseModel(id: num, name: "Exercise\(num)", description: "description")
     }
     static var previews: some View {
-        ExerciseGroupDetailsView(exerciseGroup: ExerciseGroupModel(id: 1, name: "Exercise group", description: "description", exercises: exercises)).environmentObject(ExerciseViewModel())
+        ExerciseGroupDetailsView(exerciseGroup: ExerciseGroupModel(id: 1, name: "Exercise group", description: "description", exercises: exercises)).environmentObject(GlobalViewModel())
     }
 }

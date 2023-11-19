@@ -1,14 +1,13 @@
 //
-//  ExerciseViewModel.swift
+//  GlobalViewModel.swift
 //  ProRep
 //
-//  Created by Qiang Loozen on 22/04/2023.
+//  Created by Qiang Loozen on 19/11/2023.
 //
 
 import Foundation
 
-@MainActor class ExerciseViewModel: ObservableObject {
-    // MARK: PUBLIC
+class GlobalViewModel: ObservableObject {
     @Published var exercises: [ExerciseModel] = []
     @Published var groups: [ExerciseGroupModel] = []
     
@@ -30,7 +29,6 @@ import Foundation
         }
     }
     
-    // MARK: INIT
     init() {
         Task {
             await self.fetchGroups()
