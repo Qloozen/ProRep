@@ -7,9 +7,18 @@
 
 import Foundation
 
-class GlobalViewModel: ObservableObject {
+@MainActor class GlobalViewModel: ObservableObject {
+    @Published var user: UserModel? = nil
     @Published var exercises: [ExerciseModel] = []
     @Published var groups: [ExerciseGroupModel] = []
+    var schedule: [Int: ExerciseGroupModel?] {
+        get {
+            var plannedGroups: [Int: ExerciseGroupModel?] = [:]
+
+            for day in 1...7 { plannedGroups[day] = groups.first { $0.planned_on_day == day }}
+            return plannedGroups
+        }
+    }
     
     public func fetchGroups() async {
         do {
@@ -29,8 +38,21 @@ class GlobalViewModel: ObservableObject {
         }
     }
     
+    private func fetchUserData() async {
+        let userId = UserDefaults.standard.string(forKey: CurrentUserDefaults.user_id.rawValue)
+        guard let userId = userId else { return }
+        
+        do {
+            self.user = try await UserService.sharedInstance.getUserById(id: userId)
+        }
+        catch {
+            print(String(describing: error))
+        }
+    }
+    
     init() {
         Task {
+            await self.fetchUserData()
             await self.fetchGroups()
             await self.fetchExercises()
         }

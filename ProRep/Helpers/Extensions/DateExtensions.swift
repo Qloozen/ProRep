@@ -8,6 +8,7 @@
 import Foundation
 
 extension Date {
+    public func getDayNames() -> [String] {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]}
     public func getDayOfWeek() -> Int {
         let dayOfWeek = Calendar.current.component(.weekday, from: Date.now) // Starts from Sunday
         

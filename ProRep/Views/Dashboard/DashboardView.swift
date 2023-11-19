@@ -8,33 +8,47 @@
 import SwiftUI
 
 struct DashboardView: View {
-    @StateObject private var viewmodel = DashboardViewModel()
+    @EnvironmentObject private var globalViewModel: GlobalViewModel
     @AppStorage(CurrentUserDefaults.user_image.rawValue) var user_image: URL?
     @State var showExerciseGroupForum = false
-
+    @State var selectedDay: Int = Date().getDayOfWeek()
+    let dayNames = Date().getDayNames()
+    
+    private var displayHeader: String {
+        get {
+            if globalViewModel.schedule[selectedDay] == nil {
+                return "No exercises planned"
+            }
+            else if Date().getDayOfWeek() == selectedDay {
+                return "Today's exercises"
+            } else {
+                return dayNames[selectedDay - 1].capitalized + " exercises"
+            }
+        }
+    }
+    
     var body: some View {
         VStack (alignment: .leading, spacing: 20) {
             ScrollViewReader { val in
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(viewmodel.days, id: \.self) { day in
-        
+                        ForEach(1..<8 , id: \.self) { day in
                             DayButton(
-                                dayName: day,
-                                dayNumber: (viewmodel.days.firstIndex(of: day) ?? 0) + 1,
-                                selectedDay: $viewmodel.selectedDay
+                                dayName: dayNames[day - 1],
+                                dayNumber: day,
+                                selectedDay: $selectedDay
                             )
-                            .id((viewmodel.days.firstIndex(of: day) ?? 0) + 1)
+                            .id(day)
                         }
                     }
                 }.onAppear() {
                     val.scrollTo(Date().getDayOfWeek())
                 }
             }
-            Text(viewmodel.displayHeader)
+            Text(displayHeader)
                 .font(.headline)
             
-            if let group = viewmodel.selectedGroup {
+            if let group = globalViewModel.schedule[selectedDay] ?? nil {
                 Text(group.name)
 
                 ForEach(group.exercises , id: \.id) { exercise in
@@ -50,8 +64,7 @@ struct DashboardView: View {
                         print("New Group")
                     }
                     .fullScreenCover(isPresented: $showExerciseGroupForum) {
-                        ExerciseGroupFormView(viewModel: ExerciseGroupFormViewModel(planned_on_day: viewmodel.selectedDay)).task {
-                            await viewmodel.getSchedule()
+                        ExerciseGroupFormView(viewModel: ExerciseGroupFormViewModel(planned_on_day: selectedDay)).task {
                         }
                     }
                 }.padding(.horizontal, 20)
