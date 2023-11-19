@@ -11,6 +11,8 @@ struct ExerciseGroupDetailsView: View {
     @Environment(\.dismiss) var dismiss
     public var exerciseGroup: ExerciseGroupModel
     @State private var showAvailableExercises: Bool = false
+    @State private var showEditGroup: Bool = false
+    @State private var showRemoveWarning: Bool = false
     @StateObject private var exerciseGroupDetailsViewModel = ExerciseGroupDetailsViewModel()
     @EnvironmentObject var globalViewModel: GlobalViewModel
     
@@ -92,6 +94,33 @@ struct ExerciseGroupDetailsView: View {
                 )
             }
             .listStyle(PlainListStyle())
+            
+            
+            HStack {
+                StyledButton(title: "Remove", color: .red) {
+                    showRemoveWarning = true
+                }
+                .alert(isPresented: $showRemoveWarning) {
+                    Alert(
+                        title: Text("Are you sure you want to delete this?"),
+                        message: Text("There is no undo"),
+                        primaryButton: .destructive(Text("Delete")) {
+                            Task {
+                                await exerciseGroupDetailsViewModel.removeGroup(groupId: exerciseGroup.id)
+                                await globalViewModel.fetchGroups()
+                                dismiss()
+                            }
+                        },
+                        secondaryButton: .cancel()
+                    )
+                }
+                StyledButton(title: "Edit") {
+                    showEditGroup = true
+                }
+                .sheet(isPresented: $showEditGroup) {
+                    ExerciseGroupFormView(viewModel: ExerciseGroupFormViewModel(exerciseGroup: exerciseGroup))
+                }
+            }.padding(.top, 10)
         }
         .padding(25)
     }
@@ -110,7 +139,7 @@ struct ExerciseGroupDetailsView: View {
 }
 
 struct ExerciseGroupDetailsView_Previews: PreviewProvider {
-    static let exercises = (1...100).map { num in
+    static let exercises = (1...5).map { num in
         ExerciseModel(id: num, name: "Exercise\(num)", description: "description")
     }
     static var previews: some View {

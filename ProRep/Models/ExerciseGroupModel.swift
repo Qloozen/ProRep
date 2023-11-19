@@ -20,3 +20,8 @@ struct CreateExerciseGroupModel: Codable {
     var description: String
     var planned_on_day: Int?
 }
+
+struct PatchExerciseGroupModel: Codable {
+    var name: String?
+    var description: String?
+}

@@ -25,9 +25,17 @@ final class APIService {
         }
 
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
-            
         let decoded = try JSONDecoder().decode(type.self, from: data)
 
         return decoded
+    }
+    
+    public func execute(apiRequest: APIRequest) async throws -> Void {
+        guard let urlRequest = try await apiRequest.request else {
+            throw APIError.failedToCreateRequest
+        }
+
+        let _ = try await URLSession.shared.data(for: urlRequest)
+
     }
 }

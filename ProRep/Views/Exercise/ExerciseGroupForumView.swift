@@ -38,11 +38,21 @@ struct ExerciseGroupFormView: View {
             
             Spacer()
             
-            StyledButton(title: "Create group", isLoading: viewModel.isLoading, disabled: !viewModel.isValid) {
-                dismiss()
-                Task {
-                    await viewModel.createGroup()
-                    await globalViewModel.fetchGroups()
+            if (viewModel.isEditing) {
+                StyledButton(title: "Update group", isLoading: viewModel.isLoading, disabled: !viewModel.isValid) {
+                    dismiss()
+                    Task {
+                        await viewModel.updateGroup()
+                        await globalViewModel.fetchGroups()
+                    }
+                }
+            } else {
+                StyledButton(title: "Create group", isLoading: viewModel.isLoading, disabled: !viewModel.isValid) {
+                    dismiss()
+                    Task {
+                        await viewModel.createGroup()
+                        await globalViewModel.fetchGroups()
+                    }
                 }
             }
         }.padding(20)
